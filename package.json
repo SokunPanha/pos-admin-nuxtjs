@@ -16,6 +16,7 @@
     "@nuxt/ui": "^4.4.0",
     "@nuxtjs/i18n": "^10.2.3",
     "nuxt": "^4.3.0",
+    "nuxt-auth-utils": "^0.5.28",
     "tailwindcss": "^4.1.18"
   },
   "devDependencies": {

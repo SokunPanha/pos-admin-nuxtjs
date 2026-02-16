@@ -1,5 +1,7 @@
 {
   "message": {
-    "signInToAccount": "Sign in to your account"
+    "signInToAccount": "Sign in to your account",
+    "loginSuccess": "Login successful",
+    "loginFailed": "Login failed"
   }
 }

@@ -4,6 +4,7 @@ import type { FormSubmitEvent } from "#ui/types";
 
 definePageMeta({
   layout: false,
+  middleware: ["guest"],
 });
 
 const { t } = useI18n();
@@ -26,13 +27,25 @@ const state = reactive<Partial<Schema>>({
 });
 
 const loading = ref(false);
+const toast = useToast();
 
 async function onSubmit(event: FormSubmitEvent<Schema>) {
   loading.value = true;
   try {
-    console.log("Login submitted:", event.data);
-    // TODO: implement actual login logic
-    await navigateTo("/");
+    await $fetch("/api/admin/auth/login", {
+      method: "POST",
+      body: event.data,
+    });
+    toast.add({
+      title: t("message.loginSuccess"),
+      color: "success",
+    });
+    reloadNuxtApp({ path: "/" });
+  } catch (error: any) {
+    toast.add({
+      title: error?.data?.message || t("message.loginFailed"),
+      color: "error",
+    });
   } finally {
     loading.value = false;
   }

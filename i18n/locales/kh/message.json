@@ -1,5 +1,7 @@
 {
   "message": {
-    "signInToAccount": "ចូលទៅគណនីរបស់អ្នក"
+    "signInToAccount": "ចូលទៅគណនីរបស់អ្នក",
+    "loginSuccess": "ចូលបានជោគជ័យ",
+    "loginFailed": "ការចូលបរាជ័យ"
   }
 }
