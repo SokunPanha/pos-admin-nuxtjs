@@ -33,8 +33,10 @@ const nav = computed(() => [
 <template>
   <UDashboardGroup>
     <UDashboardSidebar collapsible>
-      <template #header>
+      <template #header="{ collapsed }">
         <div class="flex items-center gap-2 px-1">
+          <UIcon v-if="collapsed" name="i-lucide-store" class="size-5 shrink-0" />
+          <span v-else class="text-lg font-semibold truncate">Tiny POS</span>
         </div>
       </template>
 
