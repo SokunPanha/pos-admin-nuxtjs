@@ -1,31 +1,33 @@
 <script setup lang="ts">
-const nav = [
+const { t } = useI18n();
+
+const nav = computed(() => [
   {
-    label: "Dashboard",
+    label: t("label.dashboard"),
     icon: "i-lucide-layout-dashboard",
     to: "/",
   },
   {
-    label: "Products",
+    label: t("label.products"),
     icon: "i-lucide-package",
     to: "/products",
   },
   {
-    label: "Orders",
+    label: t("label.orders"),
     icon: "i-lucide-shopping-cart",
     to: "/orders",
   },
   {
-    label: "Customers",
+    label: t("label.customers"),
     icon: "i-lucide-users",
     to: "/customers",
   },
   {
-    label: "Settings",
+    label: t("label.settings"),
     icon: "i-lucide-settings",
     to: "/settings",
   },
-];
+]);
 </script>
 
 <template>
@@ -33,7 +35,6 @@ const nav = [
     <UDashboardSidebar collapsible>
       <template #header>
         <div class="flex items-center gap-2 px-1">
-          <AppLogo class="h-6 w-auto shrink-0" />
         </div>
       </template>
 
@@ -49,7 +50,8 @@ const nav = [
     <div class="flex flex-1 flex-col min-w-0">
       <UDashboardNavbar toggle>
         <template #right>
-          <UColorModeButton class="hidden lg:flex" />
+          <UiLanguageSwitcher />
+          <UColorModeButton />
         </template>
       </UDashboardNavbar>
 

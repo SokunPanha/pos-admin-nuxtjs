@@ -1,0 +1,6 @@
+{
+  "validation": {
+    "usernameRequired": "Username is required",
+    "passwordMin": "Password must be at least 6 characters"
+  }
+}

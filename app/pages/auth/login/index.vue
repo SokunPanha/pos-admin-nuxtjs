@@ -6,12 +6,19 @@ definePageMeta({
   layout: false,
 });
 
-const schema = z.object({
-  username: z.string().min(1, "Username is required"),
-  password: z.string().min(6, "Password must be at least 6 characters"),
-});
+const { t } = useI18n();
 
-type Schema = z.output<typeof schema>;
+const schema = computed(() =>
+  z.object({
+    username: z.string().min(1, t("validation.usernameRequired")),
+    password: z.string().min(6, t("validation.passwordMin")),
+  })
+);
+
+interface Schema {
+  username: string;
+  password: string;
+}
 
 const state = reactive<Partial<Schema>>({
   username: undefined,
@@ -37,29 +44,29 @@ async function onSubmit(event: FormSubmitEvent<Schema>) {
     <UCard class="w-full max-w-sm">
       <template #header>
         <div class="text-center">
-          <h1 class="text-2xl font-bold">Admin Login</h1>
+          <h1 class="text-2xl font-bold">{{ $t('label.adminLogin') }}</h1>
           <p class="mt-1 text-sm text-(--ui-text-muted)">
-            Sign in to your account
+            {{ $t('message.signInToAccount') }}
           </p>
         </div>
       </template>
 
       <UForm :schema="schema" :state="state" class="space-y-4" @submit="onSubmit">
-        <UFormField label="Username" name="username">
+        <UFormField :label="$t('label.username')" name="username">
           <UInput
             v-model="state.username"
-            placeholder="Enter your username"
+            :placeholder="$t('placeholder.enterUsername')"
             icon="i-lucide-user"
             size="lg"
             class="w-full"
           />
         </UFormField>
 
-        <UFormField label="Password" name="password">
+        <UFormField :label="$t('label.password')" name="password">
           <UInput
             v-model="state.password"
             type="password"
-            placeholder="Enter your password"
+            :placeholder="$t('placeholder.enterPassword')"
             icon="i-lucide-lock"
             size="lg"
             class="w-full"
@@ -72,7 +79,7 @@ async function onSubmit(event: FormSubmitEvent<Schema>) {
           size="lg"
           :loading="loading"
         >
-          Sign In
+          {{ $t('label.signIn') }}
         </UButton>
       </UForm>
     </UCard>

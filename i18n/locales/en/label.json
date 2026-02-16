@@ -1,0 +1,13 @@
+{
+  "label": {
+    "adminLogin": "Admin Login",
+    "username": "Username",
+    "password": "Password",
+    "signIn": "Sign In",
+    "dashboard": "Dashboard",
+    "products": "Products",
+    "orders": "Orders",
+    "customers": "Customers",
+    "settings": "Settings"
+  }
+}
