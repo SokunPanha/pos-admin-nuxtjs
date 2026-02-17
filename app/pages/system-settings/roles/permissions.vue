@@ -98,24 +98,24 @@ const fallbackColors = [
   },
 ];
 
-function getModuleColor(resource: string) {
-  if (moduleColors[resource]) return moduleColors[resource];
-  // Consistent fallback based on resource name hash
+function getModuleColor(resource: string): { bg: string; text: string; border: string } {
+  if (moduleColors[resource]) return moduleColors[resource]!;
   const hash = resource.split("").reduce((a, c) => a + c.charCodeAt(0), 0);
-  return fallbackColors[hash % fallbackColors.length];
+  return fallbackColors[hash % fallbackColors.length]!;
 }
 
 // --- Group permissions by resource ---
 const groupedPermissions = computed(() => {
-  const groups: Record<string, MasterPermissionItemType[]> = {};
+  const groups: { [key: string]: MasterPermissionItemType[] } = {};
   for (const perm of allPermissions.value) {
-    if (!groups[perm.resource]) {
-      groups[perm.resource] = [];
-    }
-    groups[perm.resource].push(perm);
+    (groups[perm.resource] ??= []).push(perm);
   }
   return groups;
 });
+
+function getPerms(resource: string): MasterPermissionItemType[] {
+  return groupedPermissions.value[resource] ?? [];
+}
 
 const resources = computed(() => {
   const all = Object.keys(groupedPermissions.value).sort();
@@ -140,7 +140,7 @@ const selectAllValue = computed(() => {
 });
 
 function getResourceCheckValue(resource: string): boolean | "indeterminate" {
-  const perms = groupedPermissions.value[resource] || [];
+  const perms = getPerms(resource);
   if (perms.length === 0) return false;
   const count = perms.filter((p) => selectedCodes.value.has(p.code)).length;
   if (count === perms.length) return true;
@@ -149,7 +149,7 @@ function getResourceCheckValue(resource: string): boolean | "indeterminate" {
 }
 
 function getResourceSelectedCount(resource: string) {
-  const perms = groupedPermissions.value[resource] || [];
+  const perms = getPerms(resource);
   return perms.filter((p) => selectedCodes.value.has(p.code)).length;
 }
 
@@ -165,7 +165,7 @@ function togglePermission(code: string) {
 }
 
 function toggleResource(resource: string) {
-  const perms = groupedPermissions.value[resource] || [];
+  const perms = getPerms(resource);
   const newSet = new Set(selectedCodes.value);
   if (getResourceCheckValue(resource) === true) {
     for (const p of perms) newSet.delete(p.code);
@@ -311,7 +311,7 @@ onMounted(() => {
             </span>
             <span class="text-xs" :class="getModuleColor(resource).text">
               ({{ getResourceSelectedCount(resource) }}/{{
-                groupedPermissions[resource]!.length
+                getPerms(resource).length
               }})
             </span>
           </div>
@@ -319,7 +319,7 @@ onMounted(() => {
           <!-- Permission checkboxes -->
           <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-0">
             <div
-              v-for="perm in groupedPermissions[resource]"
+              v-for="perm in getPerms(resource)"
               :key="perm.code"
               class="flex items-center gap-2 px-4 py-2.5 border-t cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800/50"
               :class="getModuleColor(resource).border"
