@@ -6,6 +6,7 @@ import type { FullRoleItemType } from "~~/shared/types/ApiResponseType";
 interface RoleColumnActions {
   onEdit: (role: FullRoleItemType) => void;
   onDelete: (role: FullRoleItemType) => void;
+  onAssignPermissions: (role: FullRoleItemType) => void;
 }
 
 export function useRoleColumns(actions: RoleColumnActions) {
@@ -72,6 +73,13 @@ export function useRoleColumns(actions: RoleColumnActions) {
         cell: ({ row }: any) => {
           const role = row.original as FullRoleItemType;
           return h("div", { class: "flex items-center gap-1" }, [
+            h(UButton, {
+              icon: "i-lucide-shield-check",
+              variant: "ghost",
+              color: "primary",
+              size: "xs",
+              onClick: () => actions.onAssignPermissions(role),
+            }),
             h(UButton, {
               icon: "i-lucide-pencil",
               variant: "ghost",

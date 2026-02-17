@@ -41,7 +41,10 @@
     "addPermission": "Add Permission",
     "editPermission": "Edit Permission",
     "deletePermission": "Delete",
+    "assignPermissions": "Assign Permissions",
+    "selectAll": "Select All",
     "save": "Save",
-    "cancel": "Cancel"
+    "cancel": "Cancel",
+    "searchByResource": "Search by resource..."
   }
 }

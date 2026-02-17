@@ -41,7 +41,10 @@
     "addPermission": "បន្ថែមសិទ្ធិ",
     "editPermission": "កែប្រែសិទ្ធិ",
     "deletePermission": "លុប",
+    "assignPermissions": "ផ្តល់សិទ្ធិ",
+    "selectAll": "ជ្រើសរើសទាំងអស់",
     "save": "រក្សាទុក",
-    "cancel": "បោះបង់"
+    "cancel": "បោះបង់",
+    "searchByResource": "ស្វែងរកតាមធនធាន..."
   }
 }

@@ -29,6 +29,10 @@ function openDeleteModal(role: FullRoleItemType) {
   showDeleteModal.value = true;
 }
 
+function navigateToAssignPermissions(role: FullRoleItemType) {
+  navigateTo(`/system-settings/roles/permissions?name=${role.name}`);
+}
+
 function refreshTable() {
   tableKey.value++;
 }
@@ -37,6 +41,7 @@ function refreshTable() {
 const columns = useRoleColumns({
   onEdit: openEditModal,
   onDelete: openDeleteModal,
+  onAssignPermissions: navigateToAssignPermissions,
 });
 
 const filterField = useRoleFilters();

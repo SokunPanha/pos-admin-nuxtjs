@@ -19,6 +19,8 @@
     "permissionCreated": "បង្កើតសិទ្ធិបានជោគជ័យ",
     "permissionUpdated": "កែប្រែសិទ្ធិបានជោគជ័យ",
     "permissionDeleted": "លុបសិទ្ធិបានជោគជ័យ",
-    "confirmDeletePermission": "តើអ្នកពិតជាចង់លុបសិទ្ធិ \"{name}\" មែនទេ?"
+    "confirmDeletePermission": "តើអ្នកពិតជាចង់លុបសិទ្ធិ \"{name}\" មែនទេ?",
+    "permissionsAssigned": "ផ្តល់សិទ្ធិបានជោគជ័យ",
+    "assignPermissionsFor": "គ្រប់គ្រងសិទ្ធិសម្រាប់តួនាទី \"{name}\""
   }
 }

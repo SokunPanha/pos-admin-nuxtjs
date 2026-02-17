@@ -148,3 +148,25 @@ export interface UpdatePermissionRequestType {
 export interface DeletePermissionRequestType {
   code: string;
 }
+
+// --- Master Data ---
+
+export interface MasterPermissionItemType {
+  code: string;
+  resource: string;
+  action: string;
+  description: Record<string, string>;
+}
+
+export interface MasterPermissionListResponseType {
+  items: MasterPermissionItemType[];
+}
+
+export interface MasterRoleItemType {
+  name: string;
+  description: Record<string, string>;
+}
+
+export interface MasterRoleListResponseType {
+  items: MasterRoleItemType[];
+}
