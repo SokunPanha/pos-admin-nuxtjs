@@ -21,6 +21,8 @@
     "permissionDeleted": "Permission deleted successfully",
     "confirmDeletePermission": "Are you sure you want to delete permission \"{name}\"?",
     "permissionsAssigned": "Permissions assigned successfully",
-    "assignPermissionsFor": "Manage permissions for role \"{name}\""
+    "assignPermissionsFor": "Manage permissions for role \"{name}\"",
+    "userRoleAssigned": "Role assigned successfully",
+    "assignRoleFor": "Assign role for \"{name}\""
   }
 }

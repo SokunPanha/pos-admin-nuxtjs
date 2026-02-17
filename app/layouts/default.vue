@@ -2,6 +2,7 @@
 const { t } = useI18n();
 const { user, clear } = useUserSession();
 const toast = useToast();
+const tableFullscreen = useState("tableFullscreen", () => false);
 
 async function logout() {
   try {
@@ -67,7 +68,7 @@ const nav = computed(() => [
 
 <template>
   <UDashboardGroup>
-    <UDashboardSidebar collapsible>
+    <UDashboardSidebar v-if="!tableFullscreen" collapsible>
       <template #header="{ collapsed }">
         <div class="flex items-center gap-2 px-1">
           <UIcon v-if="collapsed" name="i-lucide-store" class="size-5 shrink-0" />
@@ -85,7 +86,7 @@ const nav = computed(() => [
     </UDashboardSidebar>
 
     <div class="flex flex-1 flex-col min-w-0">
-      <UDashboardNavbar toggle>
+      <UDashboardNavbar v-if="!tableFullscreen" toggle>
         <template #right>
           <UiLanguageSwitcher />
           <UColorModeButton />

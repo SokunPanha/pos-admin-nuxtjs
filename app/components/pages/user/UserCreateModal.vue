@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { z } from "zod/v4";
-import type { CreateUserRequestType } from "~~/shared/types/ApiResponseType";
-import { ROLE_OPTIONS } from "~~/shared/constants";
+import type { CreateUserRequestType, MasterRoleItemType } from "~~/shared/types/ApiResponseType";
 
 const emit = defineEmits<{
   success: [];
@@ -12,8 +11,15 @@ const open = defineModel<boolean>("open", { default: false });
 const { t } = useI18n();
 const toast = useToast();
 const { createUser } = useUserManagement();
+const { fetchAllRoles } = useMasterData();
 
 const loading = ref(false);
+const roles = ref<MasterRoleItemType[]>([]);
+const loadingRoles = ref(false);
+
+const roleOptions = computed(() =>
+  roles.value.map((r) => ({ label: r.name, value: r.name })),
+);
 
 const schema = z.object({
   username: z.string().min(1, t("validation.usernameRequired")),
@@ -31,13 +37,21 @@ const formState = reactive({
   roleName: "CASHIER",
 });
 
-watch(open, (val) => {
+watch(open, async (val) => {
   if (!val) return;
   formState.username = "";
   formState.password = "";
   formState.fullName = "";
   formState.phone = "";
-  formState.roleName = "CASHIER";
+  formState.roleName = "";
+  loadingRoles.value = true;
+  try {
+    roles.value = await fetchAllRoles();
+  } catch {
+    roles.value = [];
+  } finally {
+    loadingRoles.value = false;
+  }
 });
 
 async function onSubmit() {
@@ -93,7 +107,7 @@ async function onSubmit() {
           </UFormField>
 
           <UFormField :label="t('label.role')" name="roleName">
-            <USelect v-model="formState.roleName" :items="ROLE_OPTIONS" class="w-full" />
+            <USelect v-model="formState.roleName" :items="roleOptions" :loading="loadingRoles" class="w-full" />
           </UFormField>
 
           <div class="flex justify-end gap-2 pt-2">

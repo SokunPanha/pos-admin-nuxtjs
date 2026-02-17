@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { z } from "zod/v4";
-import type { UpdateRoleRequestType, FullRoleItemType } from "~~/shared/types/ApiResponseType";
+import type { UpdateRoleRequestType, RoleItemType } from "~~/shared/types/ApiResponseType";
 
 const props = defineProps<{
-  role: FullRoleItemType | null;
+  role: RoleItemType | null;
 }>();
 
 const emit = defineEmits<{

@@ -1,5 +1,5 @@
 // Auto-generated from OpenAPI spec — do not edit manually
-// Generated at: 2026-02-16T16:42:13.051Z
+// Generated at: 2026-02-17T07:26:46.575Z
 // Source: http://localhost:4000/admin/docs-yaml
 
 export interface LoginDto {
@@ -15,7 +15,7 @@ export interface CreateUserRequestType {
   roleName: string;
 }
 
-export interface RoleItemType {
+export interface UserRoleItemType {
   name: string;
   description: Record<string, unknown>;
 }
@@ -26,7 +26,7 @@ export interface UserItemType {
   fullName: string;
   phone?: string;
   isActive: "Y" | "N";
-  role: RoleItemType;
+  role: UserRoleItemType;
   createdAt: string;
   updatedAt: string;
 }
@@ -66,21 +66,24 @@ export interface AssignUserRoleRequestType {
   roleName: string;
 }
 
-// --- Role ---
+export interface CreateRoleRequestType {
+  name: string;
+  description?: Record<string, unknown>;
+  isSystem: "Y" | "N";
+}
 
-export interface PermissionItemType {
+export interface RolePermissionItemType {
   code: string;
   resource: string;
   action: string;
-  description: Record<string, string>;
-  createdAt: string;
+  description: Record<string, unknown>;
 }
 
-export interface FullRoleItemType {
+export interface RoleItemType {
   name: string;
-  description: Record<string, string>;
+  description: Record<string, unknown>;
   isSystem: "Y" | "N";
-  permissions: PermissionItemType[];
+  permissions: RolePermissionItemType[];
   createdAt: string;
   updatedAt: string;
 }
@@ -94,19 +97,13 @@ export interface ListRoleRequestType {
 
 export interface RoleListResponseType {
   total: number;
-  items: FullRoleItemType[];
-}
-
-export interface CreateRoleRequestType {
-  name: string;
-  description?: Record<string, string>;
-  isSystem: "Y" | "N";
+  items: RoleItemType[];
 }
 
 export interface UpdateRoleRequestType {
   name: string;
   newName?: string;
-  description?: Record<string, string>;
+  description?: Record<string, unknown>;
 }
 
 export interface DeleteRoleRequestType {
@@ -118,7 +115,20 @@ export interface AssignRolePermissionsRequestType {
   permissionCodes: string[];
 }
 
-// --- Permission ---
+export interface CreatePermissionRequestType {
+  code: string;
+  resource: string;
+  action: string;
+  description?: Record<string, unknown>;
+}
+
+export interface PermissionItemType {
+  code: string;
+  resource: string;
+  action: string;
+  description: Record<string, unknown>;
+  createdAt: string;
+}
 
 export interface ListPermissionRequestType {
   code?: string;
@@ -133,40 +143,76 @@ export interface PermissionListResponseType {
   items: PermissionItemType[];
 }
 
-export interface CreatePermissionRequestType {
-  code: string;
-  resource: string;
-  action: string;
-  description?: Record<string, string>;
-}
-
 export interface UpdatePermissionRequestType {
   code: string;
-  description?: Record<string, string>;
+  description?: Record<string, unknown>;
 }
 
 export interface DeletePermissionRequestType {
   code: string;
 }
 
-// --- Master Data ---
+export interface MasterPermissionListRequestType {
+  resource?: string;
+}
 
 export interface MasterPermissionItemType {
   code: string;
   resource: string;
   action: string;
-  description: Record<string, string>;
+  description: Record<string, unknown>;
 }
 
 export interface MasterPermissionListResponseType {
   items: MasterPermissionItemType[];
 }
 
+export interface MasterRoleListRequestType {
+  name?: string;
+}
+
 export interface MasterRoleItemType {
   name: string;
-  description: Record<string, string>;
+  description: Record<string, unknown>;
 }
 
 export interface MasterRoleListResponseType {
   items: MasterRoleItemType[];
+}
+
+export interface CreateProductCategoryRequestType {
+  name: Record<string, unknown>;
+  description?: Record<string, unknown>;
+  images?: string[];
+}
+
+export interface ProductCategoryItemType {
+  uuid: string;
+  name: Record<string, unknown>;
+  description?: Record<string, unknown>;
+  images?: string[];
+  createdAt: string;
+  updatedAt: string;
+}
+
+export interface ListProductCategoryRequestType {
+  name?: string;
+  page?: number;
+  pageSize?: number;
+}
+
+export interface ProductCategoryListResponseType {
+  total: number;
+  items: ProductCategoryItemType[];
+}
+
+export interface UpdateProductCategoryRequestType {
+  uuid: string;
+  name?: Record<string, unknown>;
+  description?: Record<string, unknown>;
+  images?: string[];
+}
+
+export interface DeleteProductCategoryRequestType {
+  uuid: string;
 }

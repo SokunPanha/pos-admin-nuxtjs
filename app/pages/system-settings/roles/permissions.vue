@@ -286,7 +286,7 @@ onMounted(() => {
           @update:model-value="toggleAll"
         />
       </div>
-      <main class="h-[70%] overflow-scroll grid xl:grid-cols-3 lg:grid-cols-2 gap-4">
+      <main class="h-[70%] overflow-y-auto  grid  lg:grid-cols-2 ">
         <!-- Grouped by resource -->
         <div
           v-for="resource in resources"

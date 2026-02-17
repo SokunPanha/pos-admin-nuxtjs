@@ -7,6 +7,7 @@ interface UserColumnActions {
   onEdit: (user: UserItemType) => void;
   onToggleStatus: (user: UserItemType) => void;
   onDelete: (user: UserItemType) => void;
+  onAssignRole: (user: UserItemType) => void;
 }
 
 export function useUserColumns(actions: UserColumnActions) {
@@ -79,6 +80,13 @@ export function useUserColumns(actions: UserColumnActions) {
         cell: ({ row }: any) => {
           const user = row.original as UserItemType;
           return h("div", { class: "flex items-center gap-1" }, [
+            h(UButton, {
+              icon: "i-lucide-shield",
+              variant: "ghost",
+              color: "primary",
+              size: "xs",
+              onClick: () => actions.onAssignRole(user),
+            }),
             h(UButton, {
               icon: "i-lucide-pencil",
               variant: "ghost",

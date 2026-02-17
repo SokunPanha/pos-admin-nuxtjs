@@ -1,12 +1,12 @@
 import { h } from "vue";
 import { UButton } from "#components";
 import { defineProTableColumns } from "~/components/ui/table/utils";
-import type { FullRoleItemType } from "~~/shared/types/ApiResponseType";
+import type { RoleItemType } from "~~/shared/types/ApiResponseType";
 
 interface RoleColumnActions {
-  onEdit: (role: FullRoleItemType) => void;
-  onDelete: (role: FullRoleItemType) => void;
-  onAssignPermissions: (role: FullRoleItemType) => void;
+  onEdit: (role: RoleItemType) => void;
+  onDelete: (role: RoleItemType) => void;
+  onAssignPermissions: (role: RoleItemType) => void;
 }
 
 export function useRoleColumns(actions: RoleColumnActions) {
@@ -71,7 +71,7 @@ export function useRoleColumns(actions: RoleColumnActions) {
         title: t("tableColumn.actions"),
         fixed: true,
         cell: ({ row }: any) => {
-          const role = row.original as FullRoleItemType;
+          const role = row.original as RoleItemType;
           return h("div", { class: "flex items-center gap-1" }, [
             h(UButton, {
               icon: "i-lucide-shield-check",

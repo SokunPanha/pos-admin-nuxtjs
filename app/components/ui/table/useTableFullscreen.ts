@@ -1,36 +1,33 @@
 import { ref, computed } from "vue";
+import { useState } from "#imports";
 
 export function useTableFullscreen() {
   const isFullscreen = ref(false);
+  const globalFullscreen = useState("tableFullscreen", () => false);
+
+  const syncBodyAndGlobal = () => {
+    globalFullscreen.value = isFullscreen.value;
+    if (typeof document !== "undefined") {
+      document.body.style.overflow = isFullscreen.value ? "hidden" : "";
+    }
+  };
 
   // Toggle fullscreen
   const toggleFullscreen = () => {
     isFullscreen.value = !isFullscreen.value;
-
-    // Prevent body scroll when in fullscreen
-    if (typeof document !== "undefined") {
-      if (isFullscreen.value) {
-        document.body.style.overflow = "hidden";
-      } else {
-        document.body.style.overflow = "";
-      }
-    }
+    syncBodyAndGlobal();
   };
 
   // Enter fullscreen
   const enterFullscreen = () => {
     isFullscreen.value = true;
-    if (typeof document !== "undefined") {
-      document.body.style.overflow = "hidden";
-    }
+    syncBodyAndGlobal();
   };
 
   // Exit fullscreen
   const exitFullscreen = () => {
     isFullscreen.value = false;
-    if (typeof document !== "undefined") {
-      document.body.style.overflow = "";
-    }
+    syncBodyAndGlobal();
   };
 
   // Container classes for fullscreen overlay

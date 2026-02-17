@@ -14,6 +14,7 @@ const showCreateModal = ref(false);
 const showEditModal = ref(false);
 const showDeleteModal = ref(false);
 const showToggleStatusModal = ref(false);
+const showAssignRoleModal = ref(false);
 const selectedUser = ref<UserItemType | null>(null);
 
 function openCreateModal() {
@@ -35,6 +36,11 @@ function openToggleStatusModal(user: UserItemType) {
   showToggleStatusModal.value = true;
 }
 
+function openAssignRoleModal(user: UserItemType) {
+  selectedUser.value = user;
+  showAssignRoleModal.value = true;
+}
+
 function refreshTable() {
   tableKey.value++;
 }
@@ -44,6 +50,7 @@ const columns = useUserColumns({
   onEdit: openEditModal,
   onToggleStatus: openToggleStatusModal,
   onDelete: openDeleteModal,
+  onAssignRole: openAssignRoleModal,
 });
 
 const filterField = useUserFilters();
@@ -86,6 +93,13 @@ const filterField = useUserFilters();
   <!-- Toggle Status Confirmation Modal -->
   <UserToggleStatusModal
     v-model:open="showToggleStatusModal"
+    :user="selectedUser"
+    @success="refreshTable"
+  />
+
+  <!-- Assign Role Modal -->
+  <UserAssignRoleModal
+    v-model:open="showAssignRoleModal"
     :user="selectedUser"
     @success="refreshTable"
   />

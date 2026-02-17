@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { FullRoleItemType } from "~~/shared/types/ApiResponseType";
+import type { RoleItemType } from "~~/shared/types/ApiResponseType";
 import { useRoleColumns } from "~/components/pages/role/roleColumns";
 import { useRoleFilters } from "~/components/pages/role/roleFilters";
 
@@ -13,23 +13,23 @@ const tableKey = ref(0);
 const showCreateModal = ref(false);
 const showEditModal = ref(false);
 const showDeleteModal = ref(false);
-const selectedRole = ref<FullRoleItemType | null>(null);
+const selectedRole = ref<RoleItemType | null>(null);
 
 function openCreateModal() {
   showCreateModal.value = true;
 }
 
-function openEditModal(role: FullRoleItemType) {
+function openEditModal(role: RoleItemType) {
   selectedRole.value = role;
   showEditModal.value = true;
 }
 
-function openDeleteModal(role: FullRoleItemType) {
+function openDeleteModal(role: RoleItemType) {
   selectedRole.value = role;
   showDeleteModal.value = true;
 }
 
-function navigateToAssignPermissions(role: FullRoleItemType) {
+function navigateToAssignPermissions(role: RoleItemType) {
   navigateTo(`/system-settings/roles/permissions?name=${role.name}`);
 }
 

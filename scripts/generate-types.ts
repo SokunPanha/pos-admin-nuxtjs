@@ -7,7 +7,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const SWAGGER_URL = process.env.SWAGGER_URL || "http://localhost:4000/admin/docs-yaml";
-const OUTPUT_FILE = path.resolve(__dirname, "../types/ApiResponseType.ts");
+const OUTPUT_FILE = path.resolve(__dirname, "../shared/types/ApiResponseType.ts");
 
 interface SchemaProperty {
   type?: string;

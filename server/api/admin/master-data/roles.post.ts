@@ -1,4 +1,8 @@
 export default defineEventHandler(async (event) => {
   const body = await readBody(event);
-  return proxyApiRequest(event, "/master-data/roles", { body });
+  const response = await proxyApiRequest<{data: {items: any[], total: number}}>(event, "/master-data/roles", { body });
+  return {
+    items: response.data.items,
+    total: response.data.total
+  }
 });

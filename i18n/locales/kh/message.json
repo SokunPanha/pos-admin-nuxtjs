@@ -21,6 +21,8 @@
     "permissionDeleted": "លុបសិទ្ធិបានជោគជ័យ",
     "confirmDeletePermission": "តើអ្នកពិតជាចង់លុបសិទ្ធិ \"{name}\" មែនទេ?",
     "permissionsAssigned": "ផ្តល់សិទ្ធិបានជោគជ័យ",
-    "assignPermissionsFor": "គ្រប់គ្រងសិទ្ធិសម្រាប់តួនាទី \"{name}\""
+    "assignPermissionsFor": "គ្រប់គ្រងសិទ្ធិសម្រាប់តួនាទី \"{name}\"",
+    "userRoleAssigned": "ផ្តល់តួនាទីបានជោគជ័យ",
+    "assignRoleFor": "ផ្តល់តួនាទីសម្រាប់ \"{name}\""
   }
 }
