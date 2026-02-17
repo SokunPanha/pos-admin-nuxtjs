@@ -23,6 +23,10 @@
     "permissionsAssigned": "ផ្តល់សិទ្ធិបានជោគជ័យ",
     "assignPermissionsFor": "គ្រប់គ្រងសិទ្ធិសម្រាប់តួនាទី \"{name}\"",
     "userRoleAssigned": "ផ្តល់តួនាទីបានជោគជ័យ",
-    "assignRoleFor": "ផ្តល់តួនាទីសម្រាប់ \"{name}\""
+    "assignRoleFor": "ផ្តល់តួនាទីសម្រាប់ \"{name}\"",
+    "categoryCreated": "បង្កើតប្រភេទបានជោគជ័យ",
+    "categoryUpdated": "កែប្រែប្រភេទបានជោគជ័យ",
+    "categoryDeleted": "លុបប្រភេទបានជោគជ័យ",
+    "confirmDeleteCategory": "តើអ្នកពិតជាចង់លុបប្រភេទ \"{name}\" មែនទេ?"
   }
 }

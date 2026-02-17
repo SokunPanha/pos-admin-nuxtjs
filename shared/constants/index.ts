@@ -30,4 +30,12 @@ export const PERMISSIONS = {
   PERMISSION_CREATE: "permission:create",
   PERMISSION_UPDATE: "permission:update",
   PERMISSION_DELETE: "permission:delete",
+  PRODUCT_VIEW: "product:view",
+  PRODUCT_CREATE: "product:create",
+  PRODUCT_UPDATE: "product:update",
+  PRODUCT_DELETE: "product:delete",
+  PRODUCT_CATEGORY_VIEW: "product-category:view",
+  PRODUCT_CATEGORY_CREATE: "product-category:create",
+  PRODUCT_CATEGORY_UPDATE: "product-category:update",
+  PRODUCT_CATEGORY_DELETE: "product-category:delete",
 } as const;

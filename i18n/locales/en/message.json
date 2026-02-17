@@ -23,6 +23,10 @@
     "permissionsAssigned": "Permissions assigned successfully",
     "assignPermissionsFor": "Manage permissions for role \"{name}\"",
     "userRoleAssigned": "Role assigned successfully",
-    "assignRoleFor": "Assign role for \"{name}\""
+    "assignRoleFor": "Assign role for \"{name}\"",
+    "categoryCreated": "Category created successfully",
+    "categoryUpdated": "Category updated successfully",
+    "categoryDeleted": "Category deleted successfully",
+    "confirmDeleteCategory": "Are you sure you want to delete category \"{name}\"?"
   }
 }

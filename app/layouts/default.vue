@@ -29,6 +29,7 @@ const userMenuItems = computed(() => [
 
 const nav = computed(() => {
   const systemSettingsChildren: { label: string; to: string }[] = [];
+  const productManagementChildren: { label: string; to: string }[] = [];
   if (hasPermission(PERMISSIONS.USER_VIEW)) {
     systemSettingsChildren.push({ label: t("label.users"), to: "/system-settings/users" });
   }
@@ -39,6 +40,10 @@ const nav = computed(() => {
     systemSettingsChildren.push({ label: t("label.permissionsTitle"), to: "/system-settings/permissions" });
   }
 
+  if (hasPermission(PERMISSIONS.PRODUCT_CATEGORY_VIEW)) {
+    productManagementChildren.push({ label: t("label.productCategories"), to: "/product-management/categories" });
+  }
+
   return [
     {
       label: t("label.dashboard"),
@@ -46,9 +51,9 @@ const nav = computed(() => {
       to: "/",
     },
     {
-      label: t("label.products"),
+      label: t("label.productManagement"),
       icon: "i-lucide-package",
-      to: "/products",
+      children: productManagementChildren,
     },
     {
       label: t("label.orders"),

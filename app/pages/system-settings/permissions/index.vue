@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import type { PermissionItemType } from "~~/shared/types/ApiResponseType";
 import { PERMISSIONS } from "~~/shared/constants";
-import { usePermissionColumns } from "~/components/pages/permission/permissionColumns";
-import { usePermissionFilters } from "~/components/pages/permission/permissionFilters";
+import { usePermissionColumns } from "~/components/pages/systems-setting/permission/permissionColumns";
+import { usePermissionFilters } from "~/components/pages/systems-setting/permission/permissionFilters";
 
 definePageMeta({ middleware: "permission", requiredPermission: "permission:view" });
 

@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import type { RoleItemType } from "~~/shared/types/ApiResponseType";
 import { PERMISSIONS } from "~~/shared/constants";
-import { useRoleColumns } from "~/components/pages/role/roleColumns";
-import { useRoleFilters } from "~/components/pages/role/roleFilters";
+import { useRoleColumns } from "~/components/pages/systems-setting/role/roleColumns";
+import { useRoleFilters } from "~/components/pages/systems-setting/role/roleFilters";
 
 definePageMeta({ middleware: "permission", requiredPermission: "role:view" });
 

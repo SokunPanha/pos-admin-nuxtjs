@@ -49,6 +49,12 @@
     "selectAll": "Select All",
     "save": "Save",
     "cancel": "Cancel",
-    "searchByResource": "Search by resource..."
+    "searchByResource": "Search by resource...",
+    "productManagement": "Product Management",
+    "productCategories": "Product Categories",
+    "categoryName": "Category Name",
+    "addCategory": "Add Category",
+    "editCategory": "Edit Category",
+    "deleteCategory": "Delete"
   }
 }

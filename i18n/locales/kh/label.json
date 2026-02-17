@@ -49,6 +49,12 @@
     "selectAll": "ជ្រើសរើសទាំងអស់",
     "save": "រក្សាទុក",
     "cancel": "បោះបង់",
-    "searchByResource": "ស្វែងរកតាមធនធាន..."
+    "searchByResource": "ស្វែងរកតាមធនធាន...",
+    "productManagement": "គ្រប់គ្រងផលិតផល",
+    "productCategories": "ប្រភេទផលិតផល",
+    "categoryName": "ឈ្មោះប្រភេទ",
+    "addCategory": "បន្ថែមប្រភេទ",
+    "editCategory": "កែប្រែប្រភេទ",
+    "deleteCategory": "លុប"
   }
 }

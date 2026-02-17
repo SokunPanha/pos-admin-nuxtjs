@@ -13,6 +13,7 @@
     "permissions": "Permissions",
     "permissionCode": "Code",
     "resource": "Resource",
-    "action": "Action"
+    "action": "Action",
+    "categoryName": "Category Name"
   }
 }
