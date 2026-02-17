@@ -2,7 +2,7 @@ export default defineEventHandler(async (event) => {
   const { apiUrlBase } = useRuntimeConfig();
   const body = await readBody(event);
 
-  const response = await $fetch<Record<string, any>>(
+  const response = await $fetch.raw(
     `${apiUrlBase}/auth/login`,
     {
       method: "POST",
@@ -10,11 +10,17 @@ export default defineEventHandler(async (event) => {
     }
   );
 
-  console.log("Backend login response:", JSON.stringify(response, null, 2));
+  // Forward Set-Cookie headers from backend to client
+  const setCookies = response.headers.getSetCookie();
+  for (const cookie of setCookies) {
+    appendResponseHeader(event, "Set-Cookie", cookie);
+  }
+
+  const userResponse = response._data as Record<string, any>;
 
   await setUserSession(event, {
-    user: response.user || response.data?.user || response,
+    user: userResponse.data || userResponse.data || userResponse,
   });
 
-  return response;
+  return userResponse;
 });
