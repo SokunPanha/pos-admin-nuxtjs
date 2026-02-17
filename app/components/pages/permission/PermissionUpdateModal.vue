@@ -76,12 +76,24 @@ async function onSubmit() {
             <code class="ml-1 px-2 py-1 rounded bg-gray-100 font-mono">{{ permission?.code }}</code>
           </div>
 
-          <UFormField :label="t('label.descriptionEn')" name="descriptionEn">
-            <UInput v-model="formState.descriptionEn" class="w-full" />
-          </UFormField>
-
-          <UFormField :label="t('label.descriptionKm')" name="descriptionKm">
-            <UInput v-model="formState.descriptionKm" class="w-full" />
+          <UFormField :label="t('label.description')">
+            <UTabs
+              :items="[{ label: t('label.english'), value: 'en' }, { label: t('label.khmer'), value: 'km' }]"
+              class="w-full"
+            >
+              <template #content="{ item }">
+                <UInput
+                  v-if="item.value === 'en'"
+                  v-model="formState.descriptionEn"
+                  class="w-full mt-2"
+                />
+                <UInput
+                  v-else
+                  v-model="formState.descriptionKm"
+                  class="w-full mt-2"
+                />
+              </template>
+            </UTabs>
           </UFormField>
 
           <div class="flex justify-end gap-2 pt-2">
