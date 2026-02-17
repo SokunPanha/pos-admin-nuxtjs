@@ -52,6 +52,10 @@ const nav = computed(() => [
         label: t("label.users"),
         to: "/system-settings/users",
       },
+      {
+        label: t("label.roles"),
+        to: "/system-settings/roles",
+      },
     ],
   },
 ]);

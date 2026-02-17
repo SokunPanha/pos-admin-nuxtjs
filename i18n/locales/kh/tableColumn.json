@@ -6,6 +6,10 @@
     "role": "តួនាទី",
     "status": "ស្ថានភាព",
     "createdAt": "បង្កើតនៅ",
-    "actions": "សកម្មភាព"
+    "actions": "សកម្មភាព",
+    "roleName": "ឈ្មោះតួនាទី",
+    "description": "ការពិពណ៌នា",
+    "isSystem": "តួនាទីប្រព័ន្ធ",
+    "permissions": "សិទ្ធិ"
   }
 }

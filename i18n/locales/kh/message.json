@@ -11,6 +11,10 @@
     "operationFailed": "ប្រតិបត្តិការបរាជ័យ",
     "confirmDeleteUser": "តើអ្នកពិតជាចង់លុបអ្នកប្រើ \"{name}\" មែនទេ?",
     "confirmActivateUser": "តើអ្នកពិតជាចង់ធ្វើឱ្យអ្នកប្រើ \"{name}\" សកម្មមែនទេ?",
-    "confirmDeactivateUser": "តើអ្នកពិតជាចង់ធ្វើឱ្យអ្នកប្រើ \"{name}\" អសកម្មមែនទេ?"
+    "confirmDeactivateUser": "តើអ្នកពិតជាចង់ធ្វើឱ្យអ្នកប្រើ \"{name}\" អសកម្មមែនទេ?",
+    "roleCreated": "បង្កើតតួនាទីបានជោគជ័យ",
+    "roleUpdated": "កែប្រែតួនាទីបានជោគជ័យ",
+    "roleDeleted": "លុបតួនាទីបានជោគជ័យ",
+    "confirmDeleteRole": "តើអ្នកពិតជាចង់លុបតួនាទី \"{name}\" មែនទេ?"
   }
 }

@@ -1,5 +1,5 @@
 // Auto-generated from OpenAPI spec — do not edit manually
-// Generated at: 2026-02-17T03:49:17.622Z
+// Generated at: 2026-02-17T04:52:57.813Z
 // Source: http://localhost:4000/admin/docs-yaml
 
 export interface LoginDto {
@@ -15,7 +15,7 @@ export interface CreateUserRequestType {
   roleName: string;
 }
 
-export interface RoleItemType {
+export interface UserRoleItemType {
   name: string;
   description: Record<string, unknown>;
 }
@@ -26,7 +26,7 @@ export interface UserItemType {
   fullName: string;
   phone?: string;
   isActive: "Y" | "N";
-  role: RoleItemType;
+  role: UserRoleItemType;
   createdAt: string;
   updatedAt: string;
 }
@@ -64,4 +64,53 @@ export interface UpdateUserStatusRequestType {
 export interface AssignUserRoleRequestType {
   uuid: string;
   roleName: string;
+}
+
+export interface CreateRoleRequestType {
+  name: string;
+  description?: Record<string, unknown>;
+  isSystem: "Y" | "N";
+}
+
+export interface PermissionItemType {
+  code: string;
+  resource: string;
+  action: string;
+  description: Record<string, unknown>;
+}
+
+export interface RoleItemType {
+  name: string;
+  description: Record<string, unknown>;
+  isSystem: "Y" | "N";
+  permissions: PermissionItemType[];
+  createdAt: string;
+  updatedAt: string;
+}
+
+export interface ListRoleRequestType {
+  name?: string;
+  isSystem?: "Y" | "N";
+  page?: number;
+  pageSize?: number;
+}
+
+export interface RoleListResponseType {
+  total: number;
+  items: RoleItemType[];
+}
+
+export interface UpdateRoleRequestType {
+  name: string;
+  newName?: string;
+  description?: Record<string, unknown>;
+}
+
+export interface DeleteRoleRequestType {
+  name: string;
+}
+
+export interface AssignRolePermissionsRequestType {
+  name: string;
+  permissionCodes: string[];
 }

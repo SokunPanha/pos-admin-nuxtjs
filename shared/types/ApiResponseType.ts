@@ -65,3 +65,54 @@ export interface AssignUserRoleRequestType {
   uuid: string;
   roleName: string;
 }
+
+// --- Role ---
+
+export interface PermissionItemType {
+  code: string;
+  resource: string;
+  action: string;
+  description: Record<string, string>;
+}
+
+export interface FullRoleItemType {
+  name: string;
+  description: Record<string, string>;
+  isSystem: "Y" | "N";
+  permissions: PermissionItemType[];
+  createdAt: string;
+  updatedAt: string;
+}
+
+export interface ListRoleRequestType {
+  name?: string;
+  isSystem?: "Y" | "N";
+  page?: number;
+  pageSize?: number;
+}
+
+export interface RoleListResponseType {
+  total: number;
+  items: FullRoleItemType[];
+}
+
+export interface CreateRoleRequestType {
+  name: string;
+  description?: Record<string, string>;
+  isSystem: "Y" | "N";
+}
+
+export interface UpdateRoleRequestType {
+  name: string;
+  newName?: string;
+  description?: Record<string, string>;
+}
+
+export interface DeleteRoleRequestType {
+  name: string;
+}
+
+export interface AssignRolePermissionsRequestType {
+  name: string;
+  permissionCodes: string[];
+}

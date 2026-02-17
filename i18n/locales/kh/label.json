@@ -24,6 +24,16 @@
     "confirmStatusChange": "បញ្ជាក់ការផ្លាស់ប្តូរស្ថានភាព",
     "activate": "ធ្វើឱ្យសកម្ម",
     "deactivate": "ធ្វើឱ្យអសកម្ម",
+    "roles": "តួនាទី",
+    "roleName": "ឈ្មោះតួនាទី",
+    "addRole": "បន្ថែមតួនាទី",
+    "editRole": "កែប្រែតួនាទី",
+    "deleteRole": "លុប",
+    "descriptionEn": "ការពិពណ៌នា (EN)",
+    "descriptionKm": "ការពិពណ៌នា (KM)",
+    "permissions": "សិទ្ធិ",
+    "yes": "បាទ/ចាស",
+    "no": "ទេ",
     "save": "រក្សាទុក",
     "cancel": "បោះបង់"
   }

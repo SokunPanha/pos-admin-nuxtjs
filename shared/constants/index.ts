@@ -8,3 +8,8 @@ export const USER_STATUS_OPTIONS = [
   { label: "Active", value: "Y" },
   { label: "Inactive", value: "N" },
 ];
+
+export const SYSTEM_ROLE_OPTIONS = [
+  { label: "Yes", value: "Y" },
+  { label: "No", value: "N" },
+];
