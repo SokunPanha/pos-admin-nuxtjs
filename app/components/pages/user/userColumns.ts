@@ -1,6 +1,7 @@
 import { h } from "vue";
 import { UButton } from "#components";
 import { defineProTableColumns } from "~/components/ui/table/utils";
+import { PERMISSIONS } from "~~/shared/constants";
 import type { UserItemType } from "~~/shared/types/ApiResponseType";
 
 interface UserColumnActions {
@@ -12,9 +13,17 @@ interface UserColumnActions {
 
 export function useUserColumns(actions: UserColumnActions) {
   const { t } = useI18n();
+  const { hasPermission, hasAnyPermission } = usePermission();
 
-  return () =>
-    defineProTableColumns([
+  const hasAnyAction = hasAnyPermission([
+    PERMISSIONS.USER_ASSIGN_ROLE,
+    PERMISSIONS.USER_UPDATE,
+    PERMISSIONS.USER_UPDATE_STATUS,
+    PERMISSIONS.USER_DELETE,
+  ]);
+
+  return () => {
+    const cols: any[] = [
       {
         accessorKey: "username",
         header: t("tableColumn.username"),
@@ -40,7 +49,7 @@ export function useUserColumns(actions: UserColumnActions) {
           return h(
             "span",
             { class: "px-2 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-800" },
-            role?.name || "-"
+            role?.name || "-",
           );
         },
       },
@@ -50,9 +59,7 @@ export function useUserColumns(actions: UserColumnActions) {
         title: t("tableColumn.status"),
         cell: ({ row }: any) => {
           const isActive = row.getValue("isActive");
-          const color = isActive === "Y"
-            ? "bg-green-100 text-green-800"
-            : "bg-red-100 text-red-800";
+          const color = isActive === "Y" ? "bg-green-100 text-green-800" : "bg-red-100 text-red-800";
           const label = isActive === "Y" ? t("label.active") : t("label.inactive");
           return h("span", { class: `px-2 py-1 rounded-full text-xs font-medium ${color}` }, label);
         },
@@ -72,43 +79,64 @@ export function useUserColumns(actions: UserColumnActions) {
           });
         },
       },
-      {
+    ];
+
+    if (hasAnyAction) {
+      cols.push({
         id: "actions",
         header: t("tableColumn.actions"),
         title: t("tableColumn.actions"),
         fixed: true,
         cell: ({ row }: any) => {
           const user = row.original as UserItemType;
-          return h("div", { class: "flex items-center gap-1" }, [
-            h(UButton, {
-              icon: "i-lucide-shield",
-              variant: "ghost",
-              color: "primary",
-              size: "xs",
-              onClick: () => actions.onAssignRole(user),
-            }),
-            h(UButton, {
-              icon: "i-lucide-pencil",
-              variant: "ghost",
-              color: "neutral",
-              size: "xs",
-              onClick: () => actions.onEdit(user),
-            }),
-            h(UButton, {
-              icon: user.isActive === "Y" ? "i-lucide-ban" : "i-lucide-check-circle",
-              variant: "ghost",
-              color: user.isActive === "Y" ? "warning" : "success",
-              size: "xs",
-              onClick: () => actions.onToggleStatus(user),
-            }),
-            h(UButton, {
-              icon: "i-lucide-trash-2",
-              variant: "ghost",
-              color: "error",
-              size: "xs",
-              onClick: () => actions.onDelete(user),
-            }),
-          ]);
+          const buttons: any[] = [];
+
+          if (hasPermission(PERMISSIONS.USER_ASSIGN_ROLE)) {
+            buttons.push(
+              h(UButton, {
+                icon: "i-lucide-shield",
+                variant: "ghost",
+                color: "primary",
+                size: "xs",
+                onClick: () => actions.onAssignRole(user),
+              }),
+            );
+          }
+          if (hasPermission(PERMISSIONS.USER_UPDATE)) {
+            buttons.push(
+              h(UButton, {
+                icon: "i-lucide-pencil",
+                variant: "ghost",
+                color: "neutral",
+                size: "xs",
+                onClick: () => actions.onEdit(user),
+              }),
+            );
+          }
+          if (hasPermission(PERMISSIONS.USER_UPDATE_STATUS)) {
+            buttons.push(
+              h(UButton, {
+                icon: user.isActive === "Y" ? "i-lucide-ban" : "i-lucide-check-circle",
+                variant: "ghost",
+                color: user.isActive === "Y" ? "warning" : "success",
+                size: "xs",
+                onClick: () => actions.onToggleStatus(user),
+              }),
+            );
+          }
+          if (hasPermission(PERMISSIONS.USER_DELETE)) {
+            buttons.push(
+              h(UButton, {
+                icon: "i-lucide-trash-2",
+                variant: "ghost",
+                color: "error",
+                size: "xs",
+                onClick: () => actions.onDelete(user),
+              }),
+            );
+          }
+
+          return h("div", { class: "flex items-center gap-1" }, buttons);
         },
         meta: {
           class: {
@@ -116,6 +144,9 @@ export function useUserColumns(actions: UserColumnActions) {
             td: "text-center",
           },
         },
-      },
-    ] as any);
+      });
+    }
+
+    return defineProTableColumns(cols);
+  };
 }

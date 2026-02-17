@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import type { MasterPermissionItemType } from "~~/shared/types/ApiResponseType";
 
+definePageMeta({ middleware: "permission", requiredPermission: "role:assign-permissions" });
+
 const route = useRoute();
 const router = useRouter();
 const { t } = useI18n();

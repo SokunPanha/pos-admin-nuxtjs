@@ -1,7 +1,10 @@
 <script setup lang="ts">
+import { PERMISSIONS } from "~~/shared/constants";
+
 const { t } = useI18n();
 const { user, clear } = useUserSession();
 const toast = useToast();
+const { hasPermission } = usePermission();
 const tableFullscreen = useState("tableFullscreen", () => false);
 
 async function logout() {
@@ -24,46 +27,50 @@ const userMenuItems = computed(() => [
   ],
 ]);
 
-const nav = computed(() => [
-  {
-    label: t("label.dashboard"),
-    icon: "i-lucide-layout-dashboard",
-    to: "/",
-  },
-  {
-    label: t("label.products"),
-    icon: "i-lucide-package",
-    to: "/products",
-  },
-  {
-    label: t("label.orders"),
-    icon: "i-lucide-shopping-cart",
-    to: "/orders",
-  },
-  {
-    label: t("label.customers"),
-    icon: "i-lucide-users",
-    to: "/customers",
-  },
-  {
-    label: t("label.system_settings"),
-    icon: "i-lucide-settings",
-    children: [
-      {
-        label: t("label.users"),
-        to: "/system-settings/users",
-      },
-      {
-        label: t("label.roles"),
-        to: "/system-settings/roles",
-      },
-      {
-        label: t("label.permissionsTitle"),
-        to: "/system-settings/permissions",
-      },
-    ],
-  },
-]);
+const nav = computed(() => {
+  const systemSettingsChildren: { label: string; to: string }[] = [];
+  if (hasPermission(PERMISSIONS.USER_VIEW)) {
+    systemSettingsChildren.push({ label: t("label.users"), to: "/system-settings/users" });
+  }
+  if (hasPermission(PERMISSIONS.ROLE_VIEW)) {
+    systemSettingsChildren.push({ label: t("label.roles"), to: "/system-settings/roles" });
+  }
+  if (hasPermission(PERMISSIONS.PERMISSION_VIEW)) {
+    systemSettingsChildren.push({ label: t("label.permissionsTitle"), to: "/system-settings/permissions" });
+  }
+
+  return [
+    {
+      label: t("label.dashboard"),
+      icon: "i-lucide-layout-dashboard",
+      to: "/",
+    },
+    {
+      label: t("label.products"),
+      icon: "i-lucide-package",
+      to: "/products",
+    },
+    {
+      label: t("label.orders"),
+      icon: "i-lucide-shopping-cart",
+      to: "/orders",
+    },
+    {
+      label: t("label.customers"),
+      icon: "i-lucide-users",
+      to: "/customers",
+    },
+    ...(systemSettingsChildren.length > 0
+      ? [
+          {
+            label: t("label.system_settings"),
+            icon: "i-lucide-settings",
+            children: systemSettingsChildren,
+          },
+        ]
+      : []),
+  ];
+});
 </script>
 
 <template>

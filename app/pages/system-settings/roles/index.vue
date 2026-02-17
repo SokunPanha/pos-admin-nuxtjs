@@ -1,9 +1,13 @@
 <script setup lang="ts">
 import type { RoleItemType } from "~~/shared/types/ApiResponseType";
+import { PERMISSIONS } from "~~/shared/constants";
 import { useRoleColumns } from "~/components/pages/role/roleColumns";
 import { useRoleFilters } from "~/components/pages/role/roleFilters";
 
+definePageMeta({ middleware: "permission", requiredPermission: "role:view" });
+
 const { t } = useI18n();
+const { hasPermission } = usePermission();
 const { fetchRoles } = useRoleManagement();
 
 // --- Table key for refresh ---
@@ -61,7 +65,7 @@ const filterField = useRoleFilters();
     <template #table-header>
       <div class="flex items-center justify-between">
         <h1 class="text-xl font-semibold">{{ t("label.roles") }}</h1>
-        <UButton icon="i-lucide-plus" @click="openCreateModal">
+        <UButton v-if="hasPermission(PERMISSIONS.ROLE_CREATE)" icon="i-lucide-plus" @click="openCreateModal">
           {{ t("label.addRole") }}
         </UButton>
       </div>

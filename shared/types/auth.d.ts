@@ -5,10 +5,8 @@ declare module "#auth-utils" {
     fullName: string;
     phone?: string;
     isActive: "Y" | "N";
-    role: {
-      name: string;
-      description: Record<string, string>;
-    };
+    role: string;
+    permissions: string[];
   }
 
   interface SecureSessionData {

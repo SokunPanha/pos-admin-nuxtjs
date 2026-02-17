@@ -1,6 +1,7 @@
 import { h } from "vue";
 import { UButton } from "#components";
 import { defineProTableColumns } from "~/components/ui/table/utils";
+import { PERMISSIONS } from "~~/shared/constants";
 import type { PermissionItemType } from "~~/shared/types/ApiResponseType";
 
 interface PermissionColumnActions {
@@ -10,9 +11,15 @@ interface PermissionColumnActions {
 
 export function usePermissionColumns(actions: PermissionColumnActions) {
   const { t, locale } = useI18n();
+  const { hasPermission, hasAnyPermission } = usePermission();
 
-  return () =>
-    defineProTableColumns([
+  const hasAnyAction = hasAnyPermission([
+    PERMISSIONS.PERMISSION_UPDATE,
+    PERMISSIONS.PERMISSION_DELETE,
+  ]);
+
+  return () => {
+    const cols: any[] = [
       {
         accessorKey: "code",
         header: t("tableColumn.permissionCode"),
@@ -61,29 +68,42 @@ export function usePermissionColumns(actions: PermissionColumnActions) {
           });
         },
       },
-      {
+    ];
+
+    if (hasAnyAction) {
+      cols.push({
         id: "actions",
         header: t("tableColumn.actions"),
         title: t("tableColumn.actions"),
         fixed: true,
         cell: ({ row }: any) => {
           const permission = row.original as PermissionItemType;
-          return h("div", { class: "flex items-center gap-1" }, [
-            h(UButton, {
-              icon: "i-lucide-pencil",
-              variant: "ghost",
-              color: "neutral",
-              size: "xs",
-              onClick: () => actions.onEdit(permission),
-            }),
-            h(UButton, {
-              icon: "i-lucide-trash-2",
-              variant: "ghost",
-              color: "error",
-              size: "xs",
-              onClick: () => actions.onDelete(permission),
-            }),
-          ]);
+          const buttons: any[] = [];
+
+          if (hasPermission(PERMISSIONS.PERMISSION_UPDATE)) {
+            buttons.push(
+              h(UButton, {
+                icon: "i-lucide-pencil",
+                variant: "ghost",
+                color: "neutral",
+                size: "xs",
+                onClick: () => actions.onEdit(permission),
+              }),
+            );
+          }
+          if (hasPermission(PERMISSIONS.PERMISSION_DELETE)) {
+            buttons.push(
+              h(UButton, {
+                icon: "i-lucide-trash-2",
+                variant: "ghost",
+                color: "error",
+                size: "xs",
+                onClick: () => actions.onDelete(permission),
+              }),
+            );
+          }
+
+          return h("div", { class: "flex items-center gap-1" }, buttons);
         },
         meta: {
           class: {
@@ -91,6 +111,9 @@ export function usePermissionColumns(actions: PermissionColumnActions) {
             td: "text-center",
           },
         },
-      },
-    ] as any);
+      });
+    }
+
+    return defineProTableColumns(cols);
+  };
 }

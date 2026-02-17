@@ -1,9 +1,13 @@
 <script setup lang="ts">
 import type { UserItemType } from "~~/shared/types/ApiResponseType";
+import { PERMISSIONS } from "~~/shared/constants";
 import { useUserColumns } from "~/components/pages/user/userColumns";
 import { useUserFilters } from "~/components/pages/user/userFilters";
 
+definePageMeta({ middleware: "permission", requiredPermission: "user:view" });
+
 const { t } = useI18n();
+const { hasPermission } = usePermission();
 const { fetchUsers } = useUserManagement();
 
 // --- Table key for refresh ---
@@ -70,7 +74,7 @@ const filterField = useUserFilters();
     <template #table-header>
       <div class="flex items-center justify-between">
         <h1 class="text-xl font-semibold">{{ t("label.users") }}</h1>
-        <UButton icon="i-lucide-plus" @click="openCreateModal">
+        <UButton v-if="hasPermission(PERMISSIONS.USER_CREATE)" icon="i-lucide-plus" @click="openCreateModal">
           {{ t("label.addUser") }}
         </UButton>
       </div>

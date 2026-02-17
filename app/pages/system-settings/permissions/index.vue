@@ -1,9 +1,13 @@
 <script setup lang="ts">
 import type { PermissionItemType } from "~~/shared/types/ApiResponseType";
+import { PERMISSIONS } from "~~/shared/constants";
 import { usePermissionColumns } from "~/components/pages/permission/permissionColumns";
 import { usePermissionFilters } from "~/components/pages/permission/permissionFilters";
 
+definePageMeta({ middleware: "permission", requiredPermission: "permission:view" });
+
 const { t } = useI18n();
+const { hasPermission } = usePermission();
 const { fetchPermissions } = usePermissionManagement();
 
 // --- Table key for refresh ---
@@ -56,7 +60,7 @@ const filterField = usePermissionFilters();
     <template #table-header>
       <div class="flex items-center justify-between">
         <h1 class="text-xl font-semibold">{{ t("label.permissionsTitle") }}</h1>
-        <UButton icon="i-lucide-plus" @click="openCreateModal">
+        <UButton v-if="hasPermission(PERMISSIONS.PERMISSION_CREATE)" icon="i-lucide-plus" @click="openCreateModal">
           {{ t("label.addPermission") }}
         </UButton>
       </div>
