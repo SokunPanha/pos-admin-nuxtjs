@@ -1,4 +1,4 @@
-import { ref, computed, watch, type Ref } from "vue";
+import { ref, computed, watch, onMounted, type Ref } from "vue";
 import type { ColumnDef } from "@tanstack/vue-table";
 
 export type ProTableColumn = ColumnDef<any, any> & {
@@ -21,33 +21,15 @@ export function useTableColumns(
   // Column order state (array of accessor keys)
   const columnOrder = ref<string[]>([]);
 
-  // Initialize visibility and order from localStorage or defaults
-  const initializeColumns = () => {
+  // Initialize with defaults (safe for SSR)
+  const initializeDefaults = () => {
     const cols = columnsRef.value;
-
-    // Try to load from localStorage
-    if (tableId && typeof window !== "undefined") {
-      const stored = localStorage.getItem(`${STORAGE_KEY_PREFIX}${tableId}`);
-      if (stored) {
-        try {
-          const { visibility, order } = JSON.parse(stored);
-          columnVisibility.value = visibility || {};
-          columnOrder.value = order || [];
-          return;
-        } catch (e) {
-          console.warn("Failed to parse stored column settings", e);
-        }
-      }
-    }
-
-    // Initialize defaults
     const visibility: Record<string, boolean> = {};
     const order: string[] = [];
 
     cols.forEach((col: any) => {
       const key = (col.accessorKey as string) || col.id || "";
       if (key) {
-        // Set visibility (default to true unless hideInTable is set)
         visibility[key] = !col.hideInTable;
         order.push(key);
       }
@@ -55,6 +37,21 @@ export function useTableColumns(
 
     columnVisibility.value = visibility;
     columnOrder.value = order;
+  };
+
+  // Restore from localStorage after hydration
+  const restoreFromStorage = () => {
+    if (!tableId) return;
+    const stored = localStorage.getItem(`${STORAGE_KEY_PREFIX}${tableId}`);
+    if (stored) {
+      try {
+        const { visibility, order } = JSON.parse(stored);
+        if (visibility) columnVisibility.value = visibility;
+        if (order) columnOrder.value = order;
+      } catch (e) {
+        console.warn("Failed to parse stored column settings", e);
+      }
+    }
   };
 
   // Save to localStorage
@@ -145,20 +142,7 @@ export function useTableColumns(
 
   // Reset to defaults
   const resetColumns = () => {
-    const cols = columnsRef.value;
-    const visibility: Record<string, boolean> = {};
-    const order: string[] = [];
-
-    cols.forEach((col: any) => {
-      const key = (col.accessorKey as string) || col.id || "";
-      if (key) {
-        visibility[key] = !col.hideInTable;
-        order.push(key);
-      }
-    });
-
-    columnVisibility.value = visibility;
-    columnOrder.value = order;
+    initializeDefaults();
   };
 
   // Show all columns
@@ -172,8 +156,9 @@ export function useTableColumns(
     });
   };
 
-  // Initialize on mount
-  initializeColumns();
+  // Initialize with defaults (SSR-safe), then restore from localStorage after hydration
+  initializeDefaults();
+  onMounted(restoreFromStorage);
 
   return {
     columnVisibility,

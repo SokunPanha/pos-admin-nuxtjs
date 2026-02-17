@@ -13,10 +13,16 @@ export function useTableFilter(
   );
 
   type FilterKeys = FilterFieldType["index"];
+  const getDefaultValue = (valueType: string) => {
+    if (valueType === "date" || valueType === "dateRange") return undefined;
+    if (valueType === "checkbox" || valueType === "toggle") return false;
+    return "";
+  };
+
   const filter = reactive(
     (filterField ?? []).reduce(
       (acc, item) => {
-        acc[item.index] = "";
+        acc[item.index] = getDefaultValue(item.valueType);
         return acc;
       },
       {} as Record<FilterKeys, any>,
@@ -28,8 +34,8 @@ export function useTableFilter(
   };
 
   const resetFilter = async () => {
-    filterItems.value?.forEach((item) => {
-      filter[item.index] = "";
+    filterField?.forEach((item) => {
+      filter[item.index] = getDefaultValue(item.valueType);
     });
     await fetchData(filter);
   };
