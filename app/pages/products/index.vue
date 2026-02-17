@@ -1,3 +1,9 @@
+<script setup lang="ts">
+const { t } = useI18n();
+</script>
+
 <template>
-  <h1>Product</h1>
+  <div>
+    <h1 class="text-xl font-semibold">{{ t("label.products") }}</h1>
+  </div>
 </template>

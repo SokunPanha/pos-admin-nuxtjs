@@ -1,4 +1,4 @@
-import { ref, computed, watch } from "vue";
+import { ref, computed, watch, onMounted } from "vue";
 
 export type DensityType = "compact" | "default" | "comfortable";
 
@@ -87,8 +87,10 @@ export function useTableDensity(
     }));
   });
 
-  // Initialize
-  loadDensity();
+  // Defer localStorage read to client to avoid SSR hydration mismatch
+  onMounted(() => {
+    loadDensity();
+  });
 
   return {
     density,

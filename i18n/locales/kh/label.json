@@ -9,6 +9,22 @@
     "orders": "ការបញ្ជាទិញ",
     "customers": "អតិថិជន",
     "settings": "ការកំណត់",
-    "logout": "ចាកចេញ"
+    "logout": "ចាកចេញ",
+    "system_settings": "ការកំណត់ប្រព័ន្ធ",
+    "users": "អ្នកប្រើប្រាស់",
+    "fullName": "ឈ្មោះពេញ",
+    "phone": "ទូរសព្ទ",
+    "role": "តួនាទី",
+    "active": "សកម្ម",
+    "inactive": "អសកម្ម",
+    "addUser": "បន្ថែមអ្នកប្រើ",
+    "editUser": "កែប្រែអ្នកប្រើ",
+    "deleteUser": "លុប",
+    "confirmDelete": "បញ្ជាក់ការលុប",
+    "confirmStatusChange": "បញ្ជាក់ការផ្លាស់ប្តូរស្ថានភាព",
+    "activate": "ធ្វើឱ្យសកម្ម",
+    "deactivate": "ធ្វើឱ្យអសកម្ម",
+    "save": "រក្សាទុក",
+    "cancel": "បោះបង់"
   }
 }

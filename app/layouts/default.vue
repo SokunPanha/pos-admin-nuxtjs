@@ -45,9 +45,14 @@ const nav = computed(() => [
     to: "/customers",
   },
   {
-    label: t("label.settings"),
+    label: t("label.system_settings"),
     icon: "i-lucide-settings",
-    to: "/settings",
+    children: [
+      {
+        label: t("label.users"),
+        to: "/system-settings/users",
+      },
+    ],
   },
 ]);
 </script>

@@ -3,6 +3,14 @@
     "signInToAccount": "ចូលទៅគណនីរបស់អ្នក",
     "loginSuccess": "ចូលបានជោគជ័យ",
     "loginFailed": "ការចូលបរាជ័យ",
-    "logoutFailed": "ការចាកចេញបរាជ័យ"
+    "logoutFailed": "ការចាកចេញបរាជ័យ",
+    "userCreated": "បង្កើតអ្នកប្រើបានជោគជ័យ",
+    "userUpdated": "កែប្រែអ្នកប្រើបានជោគជ័យ",
+    "userDeleted": "លុបអ្នកប្រើបានជោគជ័យ",
+    "userStatusUpdated": "ស្ថានភាពអ្នកប្រើបានធ្វើបច្ចុប្បន្នភាព",
+    "operationFailed": "ប្រតិបត្តិការបរាជ័យ",
+    "confirmDeleteUser": "តើអ្នកពិតជាចង់លុបអ្នកប្រើ \"{name}\" មែនទេ?",
+    "confirmActivateUser": "តើអ្នកពិតជាចង់ធ្វើឱ្យអ្នកប្រើ \"{name}\" សកម្មមែនទេ?",
+    "confirmDeactivateUser": "តើអ្នកពិតជាចង់ធ្វើឱ្យអ្នកប្រើ \"{name}\" អសកម្មមែនទេ?"
   }
 }

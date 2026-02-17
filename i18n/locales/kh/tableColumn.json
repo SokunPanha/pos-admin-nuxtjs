@@ -1,3 +1,11 @@
 {
-  "tableColumn": {}
+  "tableColumn": {
+    "username": "ឈ្មោះអ្នកប្រើ",
+    "fullName": "ឈ្មោះពេញ",
+    "phone": "ទូរសព្ទ",
+    "role": "តួនាទី",
+    "status": "ស្ថានភាព",
+    "createdAt": "បង្កើតនៅ",
+    "actions": "សកម្មភាព"
+  }
 }

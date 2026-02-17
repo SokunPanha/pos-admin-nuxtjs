@@ -1,3 +1,11 @@
 {
-  "tableColumn": {}
+  "tableColumn": {
+    "username": "Username",
+    "fullName": "Full Name",
+    "phone": "Phone",
+    "role": "Role",
+    "status": "Status",
+    "createdAt": "Created At",
+    "actions": "Actions"
+  }
 }

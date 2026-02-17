@@ -9,6 +9,22 @@
     "orders": "Orders",
     "customers": "Customers",
     "settings": "Settings",
-    "logout": "Logout"
+    "logout": "Logout",
+    "system_settings": "System Settings",
+    "users": "Users",
+    "fullName": "Full Name",
+    "phone": "Phone",
+    "role": "Role",
+    "active": "Active",
+    "inactive": "Inactive",
+    "addUser": "Add User",
+    "editUser": "Edit User",
+    "deleteUser": "Delete",
+    "confirmDelete": "Confirm Delete",
+    "confirmStatusChange": "Confirm Status Change",
+    "activate": "Activate",
+    "deactivate": "Deactivate",
+    "save": "Save",
+    "cancel": "Cancel"
   }
 }

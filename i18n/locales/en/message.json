@@ -3,6 +3,14 @@
     "signInToAccount": "Sign in to your account",
     "loginSuccess": "Login successful",
     "loginFailed": "Login failed",
-    "logoutFailed": "Logout failed"
+    "logoutFailed": "Logout failed",
+    "userCreated": "User created successfully",
+    "userUpdated": "User updated successfully",
+    "userDeleted": "User deleted successfully",
+    "userStatusUpdated": "User status updated successfully",
+    "operationFailed": "Operation failed",
+    "confirmDeleteUser": "Are you sure you want to delete user \"{name}\"?",
+    "confirmActivateUser": "Are you sure you want to activate user \"{name}\"?",
+    "confirmDeactivateUser": "Are you sure you want to deactivate user \"{name}\"?"
   }
 }
