@@ -1,5 +1,5 @@
 // Auto-generated from OpenAPI spec — do not edit manually
-// Generated at: 2026-02-17T04:52:57.813Z
+// Generated at: 2026-02-17T05:04:47.116Z
 // Source: http://localhost:4000/admin/docs-yaml
 
 export interface LoginDto {
@@ -72,7 +72,7 @@ export interface CreateRoleRequestType {
   isSystem: "Y" | "N";
 }
 
-export interface PermissionItemType {
+export interface RolePermissionItemType {
   code: string;
   resource: string;
   action: string;
@@ -83,7 +83,7 @@ export interface RoleItemType {
   name: string;
   description: Record<string, unknown>;
   isSystem: "Y" | "N";
-  permissions: PermissionItemType[];
+  permissions: RolePermissionItemType[];
   createdAt: string;
   updatedAt: string;
 }
@@ -113,4 +113,41 @@ export interface DeleteRoleRequestType {
 export interface AssignRolePermissionsRequestType {
   name: string;
   permissionCodes: string[];
+}
+
+export interface CreatePermissionRequestType {
+  code: string;
+  resource: string;
+  action: string;
+  description?: Record<string, unknown>;
+}
+
+export interface PermissionItemType {
+  code: string;
+  resource: string;
+  action: string;
+  description: Record<string, unknown>;
+  createdAt: string;
+}
+
+export interface ListPermissionRequestType {
+  code?: string;
+  resource?: string;
+  action?: string;
+  page?: number;
+  pageSize?: number;
+}
+
+export interface PermissionListResponseType {
+  total: number;
+  items: PermissionItemType[];
+}
+
+export interface UpdatePermissionRequestType {
+  code: string;
+  description?: Record<string, unknown>;
+}
+
+export interface DeletePermissionRequestType {
+  code: string;
 }

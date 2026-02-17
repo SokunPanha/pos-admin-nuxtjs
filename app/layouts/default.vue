@@ -56,6 +56,10 @@ const nav = computed(() => [
         label: t("label.roles"),
         to: "/system-settings/roles",
       },
+      {
+        label: t("label.permissionsTitle"),
+        to: "/system-settings/permissions",
+      },
     ],
   },
 ]);

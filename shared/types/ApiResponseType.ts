@@ -73,6 +73,7 @@ export interface PermissionItemType {
   resource: string;
   action: string;
   description: Record<string, string>;
+  createdAt: string;
 }
 
 export interface FullRoleItemType {
@@ -115,4 +116,35 @@ export interface DeleteRoleRequestType {
 export interface AssignRolePermissionsRequestType {
   name: string;
   permissionCodes: string[];
+}
+
+// --- Permission ---
+
+export interface ListPermissionRequestType {
+  code?: string;
+  resource?: string;
+  action?: string;
+  page?: number;
+  pageSize?: number;
+}
+
+export interface PermissionListResponseType {
+  total: number;
+  items: PermissionItemType[];
+}
+
+export interface CreatePermissionRequestType {
+  code: string;
+  resource: string;
+  action: string;
+  description?: Record<string, string>;
+}
+
+export interface UpdatePermissionRequestType {
+  code: string;
+  description?: Record<string, string>;
+}
+
+export interface DeletePermissionRequestType {
+  code: string;
 }

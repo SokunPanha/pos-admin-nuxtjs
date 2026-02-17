@@ -15,6 +15,10 @@
     "roleCreated": "Role created successfully",
     "roleUpdated": "Role updated successfully",
     "roleDeleted": "Role deleted successfully",
-    "confirmDeleteRole": "Are you sure you want to delete role \"{name}\"?"
+    "confirmDeleteRole": "Are you sure you want to delete role \"{name}\"?",
+    "permissionCreated": "Permission created successfully",
+    "permissionUpdated": "Permission updated successfully",
+    "permissionDeleted": "Permission deleted successfully",
+    "confirmDeletePermission": "Are you sure you want to delete permission \"{name}\"?"
   }
 }

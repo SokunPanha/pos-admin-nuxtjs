@@ -34,6 +34,13 @@
     "permissions": "permissions",
     "yes": "Yes",
     "no": "No",
+    "permissionsTitle": "Permissions",
+    "permissionCode": "Permission Code",
+    "resource": "Resource",
+    "action": "Action",
+    "addPermission": "Add Permission",
+    "editPermission": "Edit Permission",
+    "deletePermission": "Delete",
     "save": "Save",
     "cancel": "Cancel"
   }

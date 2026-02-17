@@ -10,6 +10,9 @@
     "roleName": "ឈ្មោះតួនាទី",
     "description": "ការពិពណ៌នា",
     "isSystem": "តួនាទីប្រព័ន្ធ",
-    "permissions": "សិទ្ធិ"
+    "permissions": "សិទ្ធិ",
+    "permissionCode": "កូដ",
+    "resource": "ធនធាន",
+    "action": "សកម្មភាព"
   }
 }

@@ -10,6 +10,9 @@
     "roleName": "Role Name",
     "description": "Description",
     "isSystem": "System Role",
-    "permissions": "Permissions"
+    "permissions": "Permissions",
+    "permissionCode": "Code",
+    "resource": "Resource",
+    "action": "Action"
   }
 }

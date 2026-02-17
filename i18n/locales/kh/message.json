@@ -15,6 +15,10 @@
     "roleCreated": "បង្កើតតួនាទីបានជោគជ័យ",
     "roleUpdated": "កែប្រែតួនាទីបានជោគជ័យ",
     "roleDeleted": "លុបតួនាទីបានជោគជ័យ",
-    "confirmDeleteRole": "តើអ្នកពិតជាចង់លុបតួនាទី \"{name}\" មែនទេ?"
+    "confirmDeleteRole": "តើអ្នកពិតជាចង់លុបតួនាទី \"{name}\" មែនទេ?",
+    "permissionCreated": "បង្កើតសិទ្ធិបានជោគជ័យ",
+    "permissionUpdated": "កែប្រែសិទ្ធិបានជោគជ័យ",
+    "permissionDeleted": "លុបសិទ្ធិបានជោគជ័យ",
+    "confirmDeletePermission": "តើអ្នកពិតជាចង់លុបសិទ្ធិ \"{name}\" មែនទេ?"
   }
 }

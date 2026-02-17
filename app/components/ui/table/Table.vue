@@ -217,7 +217,7 @@ const handleExport = () => {
 </script>
 
 <template>
-  <div :class="[containerClasses, 'h-screen overflow-hidden']">
+  <div :class="[containerClasses, ' h-full overflow-hidden']">
     <main class="p-10 h-full flex flex-col">
       <!-- Toolbar -->
       <TableToolbar
