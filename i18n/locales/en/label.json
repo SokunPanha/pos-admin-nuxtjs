@@ -55,6 +55,15 @@
     "categoryName": "Category Name",
     "addCategory": "Add Category",
     "editCategory": "Edit Category",
-    "deleteCategory": "Delete"
+    "deleteCategory": "Delete",
+    "images": "Images",
+    "uploadImage": "Upload Image",
+    "dragOrClick": "Drag & drop or click to upload",
+    "uploading": "Uploading...",
+    "productName": "Product Name",
+    "category": "Category",
+    "addProduct": "Add Product",
+    "editProduct": "Edit Product",
+    "deleteProduct": "Delete"
   }
 }

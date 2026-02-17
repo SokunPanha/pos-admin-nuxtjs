@@ -55,6 +55,15 @@
     "categoryName": "ឈ្មោះប្រភេទ",
     "addCategory": "បន្ថែមប្រភេទ",
     "editCategory": "កែប្រែប្រភេទ",
-    "deleteCategory": "លុប"
+    "deleteCategory": "លុប",
+    "images": "រូបភាព",
+    "uploadImage": "បញ្ចូលរូបភាព",
+    "dragOrClick": "អូស ឬចុចដើម្បីបញ្ចូលរូបភាព",
+    "uploading": "កំពុងបញ្ចូល...",
+    "productName": "ឈ្មោះផលិតផល",
+    "category": "ប្រភេទ",
+    "addProduct": "បន្ថែមផលិតផល",
+    "editProduct": "កែប្រែផលិតផល",
+    "deleteProduct": "លុប"
   }
 }

@@ -27,6 +27,13 @@
     "categoryCreated": "បង្កើតប្រភេទបានជោគជ័យ",
     "categoryUpdated": "កែប្រែប្រភេទបានជោគជ័យ",
     "categoryDeleted": "លុបប្រភេទបានជោគជ័យ",
-    "confirmDeleteCategory": "តើអ្នកពិតជាចង់លុបប្រភេទ \"{name}\" មែនទេ?"
+    "confirmDeleteCategory": "តើអ្នកពិតជាចង់លុបប្រភេទ \"{name}\" មែនទេ?",
+    "productCreated": "បង្កើតផលិតផលបានជោគជ័យ",
+    "productUpdated": "កែប្រែផលិតផលបានជោគជ័យ",
+    "productDeleted": "លុបផលិតផលបានជោគជ័យ",
+    "productStatusUpdated": "ស្ថានភាពផលិតផលបានធ្វើបច្ចុប្បន្នភាព",
+    "confirmDeleteProduct": "តើអ្នកពិតជាចង់លុបផលិតផល \"{name}\" មែនទេ?",
+    "confirmActivateProduct": "តើអ្នកពិតជាចង់ធ្វើឱ្យផលិតផល \"{name}\" សកម្មមែនទេ?",
+    "confirmDeactivateProduct": "តើអ្នកពិតជាចង់ធ្វើឱ្យផលិតផល \"{name}\" អសកម្មមែនទេ?"
   }
 }

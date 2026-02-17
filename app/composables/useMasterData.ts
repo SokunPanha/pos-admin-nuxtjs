@@ -3,6 +3,8 @@ import type {
   MasterPermissionItemType,
   MasterRoleListResponseType,
   MasterRoleItemType,
+  MasterCategoryListResponseType,
+  MasterCategoryItemType,
 } from "~~/shared/types/ApiResponseType";
 
 export function useMasterData() {
@@ -22,8 +24,17 @@ export function useMasterData() {
     return res.items || [];
   };
 
+  const fetchAllCategories = async (name?: string): Promise<MasterCategoryItemType[]> => {
+    const res = await $fetch<MasterCategoryListResponseType>("/api/admin/master-data/categories", {
+      method: "POST",
+      body: name ? { name } : {},
+    });
+    return res.items || [];
+  };
+
   return {
     fetchAllPermissions,
     fetchAllRoles,
+    fetchAllCategories,
   };
 }

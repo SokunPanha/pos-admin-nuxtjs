@@ -1,5 +1,5 @@
 // Auto-generated from OpenAPI spec — do not edit manually
-// Generated at: 2026-02-17T07:26:46.575Z
+// Generated at: 2026-02-17T13:33:02.549Z
 // Source: http://localhost:4000/admin/docs-yaml
 
 export interface LoginDto {
@@ -180,6 +180,19 @@ export interface MasterRoleListResponseType {
   items: MasterRoleItemType[];
 }
 
+export interface MasterCategoryListRequestType {
+  name?: string;
+}
+
+export interface MasterCategoryItemType {
+  uuid: string;
+  name: Record<string, unknown>;
+}
+
+export interface MasterCategoryListResponseType {
+  items: MasterCategoryItemType[];
+}
+
 export interface CreateProductCategoryRequestType {
   name: Record<string, unknown>;
   description?: Record<string, unknown>;
@@ -214,5 +227,160 @@ export interface UpdateProductCategoryRequestType {
 }
 
 export interface DeleteProductCategoryRequestType {
+  uuid: string;
+}
+
+export interface CreateProductRequestType {
+  name: Record<string, unknown>;
+  description?: Record<string, unknown>;
+  images?: string[];
+  categoryUuid?: string;
+}
+
+export interface ProductCategoryRefType {
+  uuid: string;
+  name: Record<string, unknown>;
+}
+
+export interface ProductItemType {
+  uuid: string;
+  name: Record<string, unknown>;
+  description?: Record<string, unknown>;
+  images?: string[];
+  isActive: string;
+  category?: ProductCategoryRefType;
+  createdAt: string;
+  updatedAt: string;
+}
+
+export interface ListProductRequestType {
+  name?: string;
+  categoryUuid?: string;
+  isActive?: string;
+  page?: number;
+  pageSize?: number;
+}
+
+export interface ProductListResponseType {
+  total: number;
+  items: ProductItemType[];
+}
+
+export interface UpdateProductRequestType {
+  uuid: string;
+  name?: Record<string, unknown>;
+  description?: Record<string, unknown>;
+  images?: string[];
+  categoryUuid?: string;
+}
+
+export interface DeleteProductRequestType {
+  uuid: string;
+}
+
+export interface UpdateProductStatusRequestType {
+  uuid: string;
+  isActive: "Y" | "N";
+}
+
+export interface CreateProductVariantRequestType {
+  productUuid: string;
+  name: Record<string, unknown>;
+  images?: string[];
+  sku: string;
+  price: number;
+  promotePrice?: number;
+  stockQty?: number;
+}
+
+export interface ProductVariantItemType {
+  uuid: string;
+  name: Record<string, unknown>;
+  images?: string[];
+  sku: string;
+  price: number;
+  promotePrice: number;
+  stockQty: number;
+  isActive: string;
+  createdAt: string;
+  updatedAt: string;
+}
+
+export interface ListProductVariantRequestType {
+  productUuid: string;
+  name?: string;
+  sku?: string;
+  isActive?: string;
+  page?: number;
+  pageSize?: number;
+}
+
+export interface ProductVariantListResponseType {
+  total: number;
+  items: ProductVariantItemType[];
+}
+
+export interface UpdateProductVariantRequestType {
+  uuid: string;
+  name?: Record<string, unknown>;
+  images?: string[];
+  sku?: string;
+  price?: number;
+  promotePrice?: number;
+  stockQty?: number;
+}
+
+export interface DeleteProductVariantRequestType {
+  uuid: string;
+}
+
+export interface UpdateProductVariantStatusRequestType {
+  uuid: string;
+  isActive: "Y" | "N";
+}
+
+export interface AttributeValueInputType {
+  value: Record<string, unknown>;
+}
+
+export interface CreateProductAttributeRequestType {
+  productUuid: string;
+  name: Record<string, unknown>;
+  values: AttributeValueInputType[];
+}
+
+export interface ProductAttributeValueItemType {
+  uuid: string;
+  value: Record<string, unknown>;
+}
+
+export interface ProductAttributeItemType {
+  uuid: string;
+  name: Record<string, unknown>;
+  values: ProductAttributeValueItemType[];
+  createdAt: string;
+  updatedAt: string;
+}
+
+export interface ListProductAttributeRequestType {
+  productUuid: string;
+}
+
+export interface ProductAttributeListResponseType {
+  items: ProductAttributeItemType[];
+}
+
+export interface UpdateAttributeValueInputType {
+  uuid?: string;
+  value: Record<string, unknown>;
+}
+
+export interface UpdateProductAttributeRequestType {
+  uuid: string;
+  name?: Record<string, unknown>;
+  values?: UpdateAttributeValueInputType[];
+}
+
+export interface DeleteProductAttributeRequestType {
   uuid: string;
 }

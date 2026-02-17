@@ -34,6 +34,7 @@ export const PERMISSIONS = {
   PRODUCT_CREATE: "product:create",
   PRODUCT_UPDATE: "product:update",
   PRODUCT_DELETE: "product:delete",
+  PRODUCT_UPDATE_STATUS: "product:update-status",
   PRODUCT_CATEGORY_VIEW: "product-category:view",
   PRODUCT_CATEGORY_CREATE: "product-category:create",
   PRODUCT_CATEGORY_UPDATE: "product-category:update",

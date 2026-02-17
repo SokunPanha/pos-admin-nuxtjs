@@ -26,6 +26,7 @@ const formState = reactive({
   nameKm: "",
   descriptionEn: "",
   descriptionKm: "",
+  images: [] as string[],
 });
 
 watch(open, (val) => {
@@ -34,6 +35,7 @@ watch(open, (val) => {
   formState.nameKm = "";
   formState.descriptionEn = "";
   formState.descriptionKm = "";
+  formState.images = [];
 });
 
 async function onSubmit() {
@@ -48,6 +50,9 @@ async function onSubmit() {
       body.description = {};
       if (formState.descriptionEn) (body.description as any).en = formState.descriptionEn;
       if (formState.descriptionKm) (body.description as any).km = formState.descriptionKm;
+    }
+    if (formState.images.length > 0) {
+      body.images = formState.images;
     }
     await createProductCategory(body);
     toast.add({ title: t("message.categoryCreated"), color: "success" });
@@ -113,6 +118,10 @@ async function onSubmit() {
                 />
               </template>
             </UTabs>
+          </UFormField>
+
+          <UFormField :label="t('label.images')">
+            <UiImageUpload v-model="formState.images" :max="5" />
           </UFormField>
 
           <div class="flex justify-end gap-2 pt-2">

@@ -27,6 +27,13 @@
     "categoryCreated": "Category created successfully",
     "categoryUpdated": "Category updated successfully",
     "categoryDeleted": "Category deleted successfully",
-    "confirmDeleteCategory": "Are you sure you want to delete category \"{name}\"?"
+    "confirmDeleteCategory": "Are you sure you want to delete category \"{name}\"?",
+    "productCreated": "Product created successfully",
+    "productUpdated": "Product updated successfully",
+    "productDeleted": "Product deleted successfully",
+    "productStatusUpdated": "Product status updated successfully",
+    "confirmDeleteProduct": "Are you sure you want to delete product \"{name}\"?",
+    "confirmActivateProduct": "Are you sure you want to activate product \"{name}\"?",
+    "confirmDeactivateProduct": "Are you sure you want to deactivate product \"{name}\"?"
   }
 }

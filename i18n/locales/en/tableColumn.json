@@ -14,6 +14,8 @@
     "permissionCode": "Code",
     "resource": "Resource",
     "action": "Action",
-    "categoryName": "Category Name"
+    "categoryName": "Category Name",
+    "productName": "Product Name",
+    "category": "Category"
   }
 }

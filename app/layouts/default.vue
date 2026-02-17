@@ -40,6 +40,9 @@ const nav = computed(() => {
     systemSettingsChildren.push({ label: t("label.permissionsTitle"), to: "/system-settings/permissions" });
   }
 
+  if (hasPermission(PERMISSIONS.PRODUCT_VIEW)) {
+    productManagementChildren.push({ label: t("label.products"), to: "/product-management/products" });
+  }
   if (hasPermission(PERMISSIONS.PRODUCT_CATEGORY_VIEW)) {
     productManagementChildren.push({ label: t("label.productCategories"), to: "/product-management/categories" });
   }

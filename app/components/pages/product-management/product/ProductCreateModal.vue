@@ -1,10 +1,6 @@
 <script setup lang="ts">
 import { z } from "zod/v4";
-import type { ProductCategoryItemType, UpdateProductCategoryRequestType } from "~~/shared/types/ApiResponseType";
-
-const props = defineProps<{
-  category: ProductCategoryItemType | null;
-}>();
+import type { CreateProductRequestType, MasterCategoryItemType } from "~~/shared/types/ApiResponseType";
 
 const emit = defineEmits<{
   success: [];
@@ -12,17 +8,20 @@ const emit = defineEmits<{
 
 const open = defineModel<boolean>("open", { default: false });
 
-const { t } = useI18n();
+const { t, locale } = useI18n();
 const toast = useToast();
-const { updateProductCategory } = useProductCategoryManagement();
+const { createProduct } = useProductManagement();
+const { fetchAllCategories } = useMasterData();
 
 const loading = ref(false);
+const categories = ref<MasterCategoryItemType[]>([]);
 
 const schema = z.object({
   nameEn: z.string().min(1),
   nameKm: z.string().optional(),
   descriptionEn: z.string().optional(),
   descriptionKm: z.string().optional(),
+  categoryUuid: z.string().optional(),
 });
 
 const formState = reactive({
@@ -30,26 +29,34 @@ const formState = reactive({
   nameKm: "",
   descriptionEn: "",
   descriptionKm: "",
+  categoryUuid: "",
   images: [] as string[],
 });
 
-watch(open, (val) => {
-  if (!val || !props.category) return;
-  formState.nameEn = String(props.category.name?.en || "");
-  formState.nameKm = String(props.category.name?.km || "");
-  formState.descriptionEn = String(props.category.description?.en || "");
-  formState.descriptionKm = String(props.category.description?.km || "");
-  formState.images = props.category.images ? [...props.category.images] : [];
+const categoryOptions = computed(() =>
+  categories.value.map((c) => ({
+    label: String(c.name?.[locale.value] || c.name?.en || ""),
+    value: c.uuid,
+  })),
+);
+
+watch(open, async (val) => {
+  if (!val) return;
+  formState.nameEn = "";
+  formState.nameKm = "";
+  formState.descriptionEn = "";
+  formState.descriptionKm = "";
+  formState.categoryUuid = "";
+  formState.images = [];
+  categories.value = await fetchAllCategories();
 });
 
 async function onSubmit() {
-  if (!props.category) return;
   loading.value = true;
   try {
-    const body: UpdateProductCategoryRequestType = {
-      uuid: props.category.uuid,
+    const body: CreateProductRequestType = {
+      name: {},
     };
-    body.name = {};
     if (formState.nameEn) (body.name as any).en = formState.nameEn;
     if (formState.nameKm) (body.name as any).km = formState.nameKm;
     if (formState.descriptionEn || formState.descriptionKm) {
@@ -57,9 +64,10 @@ async function onSubmit() {
       if (formState.descriptionEn) (body.description as any).en = formState.descriptionEn;
       if (formState.descriptionKm) (body.description as any).km = formState.descriptionKm;
     }
-    body.images = formState.images;
-    await updateProductCategory(body);
-    toast.add({ title: t("message.categoryUpdated"), color: "success" });
+    if (formState.categoryUuid) body.categoryUuid = formState.categoryUuid;
+    if (formState.images.length > 0) body.images = formState.images;
+    await createProduct(body);
+    toast.add({ title: t("message.productCreated"), color: "success" });
     open.value = false;
     emit("success");
   } catch {
@@ -75,7 +83,7 @@ async function onSubmit() {
     <template #content>
       <UCard>
         <template #header>
-          <h3 class="text-lg font-semibold">{{ t("label.editCategory") }}</h3>
+          <h3 class="text-lg font-semibold">{{ t("label.addProduct") }}</h3>
         </template>
 
         <UForm
@@ -84,7 +92,7 @@ async function onSubmit() {
           class="space-y-4"
           @submit="onSubmit"
         >
-          <UFormField :label="t('label.categoryName')" name="nameEn">
+          <UFormField :label="t('label.productName')" name="nameEn">
             <UTabs
               :items="[{ label: t('label.english'), value: 'en' }, { label: t('label.khmer'), value: 'km' }]"
               class="w-full"
@@ -122,6 +130,15 @@ async function onSubmit() {
                 />
               </template>
             </UTabs>
+          </UFormField>
+
+          <UFormField :label="t('label.category')" name="categoryUuid">
+            <USelect
+              v-model="formState.categoryUuid"
+              :items="categoryOptions"
+              value-key="value"
+              class="w-full"
+            />
           </UFormField>
 
           <UFormField :label="t('label.images')">
