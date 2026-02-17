@@ -51,6 +51,11 @@ export default defineNuxtConfig({
       },
     },
   },
+  typescript: {
+    tsConfig: {
+      include: ["../types/**/*.d.ts"],
+    },
+  },
   runtimeConfig: {
     apiUrlBase: process.env.API_URL_BASE || "http://localhost:4000/admin/v1",
   },
