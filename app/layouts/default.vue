@@ -1,5 +1,27 @@
 <script setup lang="ts">
 const { t } = useI18n();
+const { user, clear } = useUserSession();
+const toast = useToast();
+
+async function logout() {
+  try {
+    await $fetch("/api/admin/auth/logout", { method: "POST" });
+    await clear();
+    reloadNuxtApp({ path: "/auth/login" });
+  } catch {
+    toast.add({ title: t("message.logoutFailed"), color: "error" });
+  }
+}
+
+const userMenuItems = computed(() => [
+  [
+    {
+      label: t("label.logout"),
+      icon: "i-lucide-log-out",
+      onSelect: logout,
+    },
+  ],
+]);
 
 const nav = computed(() => [
   {
@@ -54,9 +76,14 @@ const nav = computed(() => [
         <template #right>
           <UiLanguageSwitcher />
           <UColorModeButton />
+          <UDropdownMenu :items="userMenuItems">
+            <UButton variant="ghost" color="neutral" class="gap-2">
+              <UIcon name="i-lucide-user-circle" class="size-5" />
+              <span class="hidden sm:inline text-sm">{{ user?.username }}</span>
+            </UButton>
+          </UDropdownMenu>
         </template>
       </UDashboardNavbar>
-
       <UMain>
         <slot />
       </UMain>

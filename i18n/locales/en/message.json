@@ -2,6 +2,7 @@
   "message": {
     "signInToAccount": "Sign in to your account",
     "loginSuccess": "Login successful",
-    "loginFailed": "Login failed"
+    "loginFailed": "Login failed",
+    "logoutFailed": "Logout failed"
   }
 }

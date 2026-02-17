@@ -2,6 +2,7 @@
   "message": {
     "signInToAccount": "ចូលទៅគណនីរបស់អ្នក",
     "loginSuccess": "ចូលបានជោគជ័យ",
-    "loginFailed": "ការចូលបរាជ័យ"
+    "loginFailed": "ការចូលបរាជ័យ",
+    "logoutFailed": "ការចាកចេញបរាជ័យ"
   }
 }
