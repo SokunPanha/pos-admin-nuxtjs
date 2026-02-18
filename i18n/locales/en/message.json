@@ -41,6 +41,10 @@
     "productVariantStatusUpdated": "Product variant status updated successfully",
     "confirmDeleteProductVariant": "Are you sure you want to delete variant \"{name}\"?",
     "confirmActivateProductVariant": "Are you sure you want to activate variant \"{name}\"?",
-    "confirmDeactivateProductVariant": "Are you sure you want to deactivate variant \"{name}\"?"
+    "confirmDeactivateProductVariant": "Are you sure you want to deactivate variant \"{name}\"?",
+    "productAttributeCreated": "Attribute created successfully",
+    "productAttributeUpdated": "Attribute updated successfully",
+    "productAttributeDeleted": "Attribute deleted successfully",
+    "confirmDeleteProductAttribute": "Are you sure you want to delete attribute \"{name}\"?"
   }
 }

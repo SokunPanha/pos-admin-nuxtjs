@@ -21,6 +21,8 @@
     "sku": "SKU",
     "price": "Price",
     "promotePrice": "Promote Price",
-    "stockQty": "Stock Qty"
+    "stockQty": "Stock Qty",
+    "attributeName": "Attribute Name",
+    "attributeValues": "Values"
   }
 }

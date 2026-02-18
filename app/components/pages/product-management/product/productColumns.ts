@@ -97,15 +97,30 @@ export function useProductColumns(actions: ProductColumnActions) {
               }),
             );
           }
-          if(hasPermission(PERMISSIONS.PRODUCT_VARIANT_VIEW)) {
-             buttons.push(
+          if (hasPermission(PERMISSIONS.PRODUCT_VARIANT_VIEW)) {
+            buttons.push(
               h(UButton, {
                 icon: "i-lucide-layers",
                 variant: "ghost",
                 color: "neutral",
                 size: "xs",
+                title: t("label.productVariants"),
                 onClick: async () => {
                   await router.push(`/product-management/products/variants/${row.original.uuid}`);
+                },
+              }),
+            );
+          }
+          if (hasPermission(PERMISSIONS.PRODUCT_ATTRIBUTE_VIEW)) {
+            buttons.push(
+              h(UButton, {
+                icon: "i-lucide-tag",
+                variant: "ghost",
+                color: "neutral",
+                size: "xs",
+                title: t("label.productAttributes"),
+                onClick: async () => {
+                  await router.push(`/product-management/products/attributes/${row.original.uuid}`);
                 },
               }),
             );

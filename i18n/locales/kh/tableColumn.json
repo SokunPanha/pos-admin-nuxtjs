@@ -21,6 +21,8 @@
     "sku": "SKU",
     "price": "តម្លៃ",
     "promotePrice": "តម្លៃបញ្ចុះ",
-    "stockQty": "ចំនួនស្តុក"
+    "stockQty": "ចំនួនស្តុក",
+    "attributeName": "ឈ្មោះគុណលក្ខណៈ",
+    "attributeValues": "តម្លៃ"
   }
 }

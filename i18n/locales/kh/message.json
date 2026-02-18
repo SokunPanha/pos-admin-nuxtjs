@@ -41,6 +41,10 @@
     "productVariantStatusUpdated": "ស្ថានភាពវ៉ារីយ៉ង់ផលិតផលបានធ្វើបច្ចុប្បន្នភាព",
     "confirmDeleteProductVariant": "តើអ្នកពិតជាចង់លុបវ៉ារីយ៉ង់ \"{name}\" មែនទេ?",
     "confirmActivateProductVariant": "តើអ្នកពិតជាចង់ធ្វើឱ្យវ៉ារីយ៉ង់ \"{name}\" សកម្មមែនទេ?",
-    "confirmDeactivateProductVariant": "តើអ្នកពិតជាចង់ធ្វើឱ្យវ៉ារីយ៉ង់ \"{name}\" អសកម្មមែនទេ?"
+    "confirmDeactivateProductVariant": "តើអ្នកពិតជាចង់ធ្វើឱ្យវ៉ារីយ៉ង់ \"{name}\" អសកម្មមែនទេ?",
+    "productAttributeCreated": "បង្កើតគុណលក្ខណៈបានជោគជ័យ",
+    "productAttributeUpdated": "កែប្រែគុណលក្ខណៈបានជោគជ័យ",
+    "productAttributeDeleted": "លុបគុណលក្ខណៈបានជោគជ័យ",
+    "confirmDeleteProductAttribute": "តើអ្នកពិតជាចង់លុបគុណលក្ខណៈ \"{name}\" មែនទេ?"
   }
 }

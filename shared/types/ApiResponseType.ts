@@ -1,5 +1,5 @@
 // Auto-generated from OpenAPI spec — do not edit manually
-// Generated at: 2026-02-17T14:39:43.771Z
+// Generated at: 2026-02-18T02:06:17.506Z
 // Source: http://localhost:4000/admin/docs-yaml
 
 export interface LoginDto {
