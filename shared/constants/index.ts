@@ -9,6 +9,11 @@ export const USER_STATUS_OPTIONS = [
   { label: "Inactive", value: "N" },
 ];
 
+export const STATUS_OPTIONS = [
+  { label: "Active", value: "Y" },
+  { label: "Inactive", value: "N" },
+];
+
 export const SYSTEM_ROLE_OPTIONS = [
   { label: "Yes", value: "Y" },
   { label: "No", value: "N" },
@@ -30,13 +35,22 @@ export const PERMISSIONS = {
   PERMISSION_CREATE: "permission:create",
   PERMISSION_UPDATE: "permission:update",
   PERMISSION_DELETE: "permission:delete",
-  PRODUCT_VIEW: "product:view",
-  PRODUCT_CREATE: "product:create",
-  PRODUCT_UPDATE: "product:update",
-  PRODUCT_DELETE: "product:delete",
   PRODUCT_UPDATE_STATUS: "product:update-status",
   PRODUCT_CATEGORY_VIEW: "product-category:view",
   PRODUCT_CATEGORY_CREATE: "product-category:create",
   PRODUCT_CATEGORY_UPDATE: "product-category:update",
   PRODUCT_CATEGORY_DELETE: "product-category:delete",
+  PRODUCT_VIEW: "product:view",
+  PRODUCT_CREATE: "product:create",
+  PRODUCT_UPDATE: "product:update",
+  PRODUCT_DELETE: "product:delete",
+  PRODUCT_VARIANT_VIEW: "product-variant:view",
+  PRODUCT_VARIANT_CREATE: "product-variant:create",
+  PRODUCT_VARIANT_UPDATE: "product-variant:update",
+  PRODUCT_VARIANT_DELETE: "product-variant:delete",
+  PRODUCT_VARIANT_UPDATE_STATUS: "product-variant:update-status",
+  PRODUCT_ATTRIBUTE_VIEW: "product-attribute:view",
+  PRODUCT_ATTRIBUTE_CREATE: "product-attribute:create",
+  PRODUCT_ATTRIBUTE_UPDATE: "product-attribute:update",
+  PRODUCT_ATTRIBUTE_DELETE: "product-attribute:delete",
 } as const;

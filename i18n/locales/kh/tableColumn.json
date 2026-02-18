@@ -16,6 +16,11 @@
     "action": "សកម្មភាព",
     "categoryName": "ឈ្មោះប្រភេទ",
     "productName": "ឈ្មោះផលិតផល",
-    "category": "ប្រភេទ"
+    "category": "ប្រភេទ",
+    "productVariantName": "ឈ្មោះវ៉ារីយ៉ង់ផលិតផល",
+    "sku": "SKU",
+    "price": "តម្លៃ",
+    "promotePrice": "តម្លៃបញ្ចុះ",
+    "stockQty": "ចំនួនស្តុក"
   }
 }

@@ -321,7 +321,7 @@ const handleExport = () => {
               :loading="loading"
               :disabled="loading"
             >
-              Search
+              {{ $t("label.search") }}
             </UButton>
             <UButton
               variant="outline"
@@ -329,11 +329,11 @@ const handleExport = () => {
               @click="resetFilter"
               :disabled="loading"
             >
-              Reset
-            </UButton>
+              {{ $t("label.reset") }}
+             </UButton>
             <UButton
               v-if="filterField.length > 3"
-              :label="isCollapseFilter ? 'Expand' : 'Collapse'"
+              :label="isCollapseFilter ? $t('label.expand') : $t('label.collapse')"
               :icon="
                 isCollapseFilter
                   ? 'i-heroicons-chevron-down'

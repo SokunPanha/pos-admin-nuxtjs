@@ -1,7 +1,7 @@
 import type {
   CreateRoleRequestType,
   UpdateRoleRequestType,
-  FullRoleItemType,
+  RoleItemType,
   RoleListResponseType,
 } from "~~/shared/types/ApiResponseType";
 
@@ -33,14 +33,14 @@ export function useRoleManagement() {
   };
 
   const createRole = async (data: CreateRoleRequestType) => {
-    return $fetch<FullRoleItemType>("/api/admin/role/create", {
+    return $fetch<RoleItemType>("/api/admin/role/create", {
       method: "POST",
       body: data,
     });
   };
 
   const updateRole = async (data: UpdateRoleRequestType) => {
-    return $fetch<FullRoleItemType>("/api/admin/role/update", {
+    return $fetch<RoleItemType>("/api/admin/role/update", {
       method: "POST",
       body: data,
     });
@@ -54,7 +54,7 @@ export function useRoleManagement() {
   };
 
   const assignPermissions = async (name: string, permissionCodes: string[]) => {
-    return $fetch<FullRoleItemType>("/api/admin/role/assign-permissions", {
+    return $fetch<RoleItemType>("/api/admin/role/assign-permissions", {
       method: "POST",
       body: { name, permissionCodes },
     });

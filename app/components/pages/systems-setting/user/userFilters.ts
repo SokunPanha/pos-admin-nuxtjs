@@ -1,5 +1,5 @@
 import { defineFilter } from "~/components/ui/table/utils";
-import { USER_STATUS_OPTIONS } from "~~/shared/constants";
+import { ROLE_OPTIONS, STATUS_OPTIONS } from "~~/shared/constants";
 import type { MasterRoleItemType } from "~~/shared/types/ApiResponseType";
 
 export function useUserFilters() {
@@ -32,13 +32,13 @@ export function useUserFilters() {
         label: t("tableColumn.status"),
         index: "isActive",
         valueType: "select",
-        options: USER_STATUS_OPTIONS.map((o) => ({ ...o, label: t(`label.${o.value === "Y" ? "active" : "inactive"}`) })),
+        options: STATUS_OPTIONS.map((o) => ({ ...o, label: t(`label.${o.value === "Y" ? "active" : "inactive"}`) })),
       },
       {
         label: t("tableColumn.role"),
         index: "roleName",
         valueType: "select",
-        options: roles.value.map((r) => ({ label: r.name, value: r.name })),
+        options: ROLE_OPTIONS.map((o) => ({ ...o, label: t(`label.${o.label}`) })),
       },
     ]),
   );

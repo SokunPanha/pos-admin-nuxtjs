@@ -64,6 +64,21 @@
     "category": "Category",
     "addProduct": "Add Product",
     "editProduct": "Edit Product",
-    "deleteProduct": "Delete"
+    "deleteProduct": "Delete",
+    "productVariants": "Product Variants",
+    "addProductVariant": "Add Product Variant",
+    "editProductVariant": "Edit Product Variant",
+    "variantName": "Variant Name",
+    "sku": "SKU",
+    "price": "Price",
+    "promotePrice": "Promote Price",
+    "stockQty": "Stock Qty",
+    "search": "Search",
+    "reset": "Reset",
+    "expand": "Expand",
+    "collapse": "Collapse",
+    "Admin": "Admin",
+    "Cashier": "Cashier",
+    "Manager": "Manager"
   }
 }

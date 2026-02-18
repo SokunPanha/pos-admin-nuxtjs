@@ -16,6 +16,11 @@
     "action": "Action",
     "categoryName": "Category Name",
     "productName": "Product Name",
-    "category": "Category"
+    "category": "Category",
+    "productVariantName": "Product Variant Name",
+    "sku": "SKU",
+    "price": "Price",
+    "promotePrice": "Promote Price",
+    "stockQty": "Stock Qty"
   }
 }

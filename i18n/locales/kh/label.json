@@ -64,6 +64,21 @@
     "category": "ប្រភេទ",
     "addProduct": "បន្ថែមផលិតផល",
     "editProduct": "កែប្រែផលិតផល",
-    "deleteProduct": "លុប"
+    "deleteProduct": "លុប",
+    "productVariants": "វ៉ារីយ៉ង់ផលិតផល",
+    "addProductVariant": "បន្ថែមវ៉ារីយ៉ង់ផលិតផល",
+    "editProductVariant": "កែប្រែវ៉ារីយ៉ង់ផលិតផល",
+    "variantName": "ឈ្មោះវ៉ារីយ៉ង់",
+    "sku": "SKU",
+    "price": "តម្លៃ",
+    "promotePrice": "តម្លៃបញ្ចុះ",
+    "stockQty": "ចំនួនស្តុក",
+    "search": "ស្វែងរក",
+    "reset": "កំណត់ឡើងវិញ",
+    "expand": "ពង្រីក",
+    "collapse": "បង្រួម",
+    "Admin": "អ្នកគ្រប់គ្រង",
+    "Cashier": "អ្នកបង់ប្រាក់",
+    "Manager": "អ្នកគ្រប់គ្រង"
   }
 }

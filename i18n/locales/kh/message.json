@@ -34,6 +34,13 @@
     "productStatusUpdated": "ស្ថានភាពផលិតផលបានធ្វើបច្ចុប្បន្នភាព",
     "confirmDeleteProduct": "តើអ្នកពិតជាចង់លុបផលិតផល \"{name}\" មែនទេ?",
     "confirmActivateProduct": "តើអ្នកពិតជាចង់ធ្វើឱ្យផលិតផល \"{name}\" សកម្មមែនទេ?",
-    "confirmDeactivateProduct": "តើអ្នកពិតជាចង់ធ្វើឱ្យផលិតផល \"{name}\" អសកម្មមែនទេ?"
+    "confirmDeactivateProduct": "តើអ្នកពិតជាចង់ធ្វើឱ្យផលិតផល \"{name}\" អសកម្មមែនទេ?",
+    "productVariantCreated": "បង្កើតវ៉ារីយ៉ង់ផលិតផលបានជោគជ័យ",
+    "productVariantUpdated": "កែប្រែវ៉ារីយ៉ង់ផលិតផលបានជោគជ័យ",
+    "productVariantDeleted": "លុបវ៉ារីយ៉ង់ផលិតផលបានជោគជ័យ",
+    "productVariantStatusUpdated": "ស្ថានភាពវ៉ារីយ៉ង់ផលិតផលបានធ្វើបច្ចុប្បន្នភាព",
+    "confirmDeleteProductVariant": "តើអ្នកពិតជាចង់លុបវ៉ារីយ៉ង់ \"{name}\" មែនទេ?",
+    "confirmActivateProductVariant": "តើអ្នកពិតជាចង់ធ្វើឱ្យវ៉ារីយ៉ង់ \"{name}\" សកម្មមែនទេ?",
+    "confirmDeactivateProductVariant": "តើអ្នកពិតជាចង់ធ្វើឱ្យវ៉ារីយ៉ង់ \"{name}\" អសកម្មមែនទេ?"
   }
 }

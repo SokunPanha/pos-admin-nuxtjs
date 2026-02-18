@@ -1,12 +1,12 @@
 import { defineFilter } from "~/components/ui/table/utils";
 import { STATUS_OPTIONS } from "~~/shared/constants";
 
-export function useProductFilters() {
+export function useProductVariantFilters() {
   const { t } = useI18n();
 
   return defineFilter([
     {
-      label: t("tableColumn.productName"),
+      label: t("tableColumn.productVariantName"),
       index: "name",
       valueType: "text",
     },

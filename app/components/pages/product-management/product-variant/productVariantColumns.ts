@@ -1,44 +1,65 @@
 import { h } from "vue";
 import { UButton } from "#components";
 import { defineProTableColumns } from "~/components/ui/table/utils";
-import type { ProductItemType } from "~~/shared/types/ApiResponseType";
+import type { ProductVariantItemType } from "~~/shared/types/ApiResponseType";
 import { PERMISSIONS } from "~~/shared/constants";
 
-interface ProductColumnActions {
-  onEdit: (product: ProductItemType) => void;
-  onToggleStatus: (product: ProductItemType) => void;
-  onDelete: (product: ProductItemType) => void;
+interface ProductVariantColumnActions {
+  onEdit: (variant: ProductVariantItemType) => void;
+  onToggleStatus: (variant: ProductVariantItemType) => void;
+  onDelete: (variant: ProductVariantItemType) => void;
 }
 
-export function useProductColumns(actions: ProductColumnActions) {
-  const router = useRouter();
+export function useProductVariantColumns(actions: ProductVariantColumnActions) {
   const { t, locale } = useI18n();
   const { hasPermission, hasAnyPermission } = usePermission();
   const hasAnyAction = hasAnyPermission([
-    PERMISSIONS.PRODUCT_UPDATE,
-    PERMISSIONS.PRODUCT_UPDATE_STATUS,
-    PERMISSIONS.PRODUCT_DELETE,
+    PERMISSIONS.PRODUCT_VARIANT_UPDATE,
+    PERMISSIONS.PRODUCT_VARIANT_UPDATE_STATUS,
+    PERMISSIONS.PRODUCT_VARIANT_DELETE,
   ]);
 
   return () => {
     const cols = defineProTableColumns([
       {
         accessorKey: "name",
-        header: t("tableColumn.productName"),
-        title: t("tableColumn.productName"),
+        header: t("tableColumn.productVariantName"),
+        title: t("tableColumn.productVariantName"),
         cell: ({ row }: any) => {
           const name = row.getValue("name");
           return name?.[locale.value] || name?.en || "-";
         },
       },
       {
-        accessorKey: "category",
-        header: t("tableColumn.category"),
-        title: t("tableColumn.category"),
+        accessorKey: "sku",
+        header: t("tableColumn.sku"),
+        title: t("tableColumn.sku"),
+      },
+      {
+        accessorKey: "price",
+        header: t("tableColumn.price"),
+        title: t("tableColumn.price"),
         cell: ({ row }: any) => {
-          const category = row.getValue("category");
-          if (!category) return "-";
-          return category.name?.[locale.value] || category.name?.en || "-";
+          const price = row.getValue("price");
+          return price != null ? `$${Number(price).toFixed(2)}` : "-";
+        },
+      },
+      {
+        accessorKey: "promotePrice",
+        header: t("tableColumn.promotePrice"),
+        title: t("tableColumn.promotePrice"),
+        cell: ({ row }: any) => {
+          const p = row.getValue("promotePrice");
+          return p ? `$${Number(p).toFixed(2)}` : "-";
+        },
+      },
+      {
+        accessorKey: "stockQty",
+        header: t("tableColumn.stockQty"),
+        title: t("tableColumn.stockQty"),
+        cell: ({ row }: any) => {
+          const qty = row.getValue("stockQty");
+          return qty ?? "-";
         },
       },
       {
@@ -86,31 +107,18 @@ export function useProductColumns(actions: ProductColumnActions) {
         cell: ({ row }: any) => {
           const buttons: any[] = [];
 
-          if (hasPermission(PERMISSIONS.PRODUCT_UPDATE)) {
+          if (hasPermission(PERMISSIONS.PRODUCT_VARIANT_UPDATE)) {
             buttons.push(
               h(UButton, {
                 icon: "i-lucide-pencil",
                 variant: "ghost",
                 color: "neutral",
                 size: "xs",
-                onClick: () => actions.onEdit(row.original as ProductItemType),
+                onClick: () => actions.onEdit(row.original as ProductVariantItemType),
               }),
             );
           }
-          if(hasPermission(PERMISSIONS.PRODUCT_VARIANT_VIEW)) {
-             buttons.push(
-              h(UButton, {
-                icon: "i-lucide-layers",
-                variant: "ghost",
-                color: "neutral",
-                size: "xs",
-                onClick: async () => {
-                  await router.push(`/product-management/products/variants/${row.original.uuid}`);
-                },
-              }),
-            );
-          }
-          if (hasPermission(PERMISSIONS.PRODUCT_UPDATE_STATUS)) {
+          if (hasPermission(PERMISSIONS.PRODUCT_VARIANT_UPDATE_STATUS)) {
             const isActive = row.original.isActive === "Y";
             buttons.push(
               h(UButton, {
@@ -118,18 +126,18 @@ export function useProductColumns(actions: ProductColumnActions) {
                 variant: "ghost",
                 color: isActive ? "warning" : "success",
                 size: "xs",
-                onClick: () => actions.onToggleStatus(row.original as ProductItemType),
+                onClick: () => actions.onToggleStatus(row.original as ProductVariantItemType),
               }),
             );
           }
-          if (hasPermission(PERMISSIONS.PRODUCT_DELETE)) {
+          if (hasPermission(PERMISSIONS.PRODUCT_VARIANT_DELETE)) {
             buttons.push(
               h(UButton, {
                 icon: "i-lucide-trash-2",
                 variant: "ghost",
                 color: "error",
                 size: "xs",
-                onClick: () => actions.onDelete(row.original as ProductItemType),
+                onClick: () => actions.onDelete(row.original as ProductVariantItemType),
               }),
             );
           }
