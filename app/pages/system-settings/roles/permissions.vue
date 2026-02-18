@@ -288,12 +288,12 @@ onMounted(() => {
           @update:model-value="toggleAll"
         />
       </div>
-      <main class="h-[70%] overflow-y-auto  grid  lg:grid-cols-2 ">
+      <main class="h-[70%] overflow-y-auto  md:columns-2 columns-1 xl:columns-3 gap-6">
         <!-- Grouped by resource -->
         <div
           v-for="resource in resources"
           :key="resource"
-          class="rounded-lg border h-fit"
+          class="rounded-lg border h-fit mb-6 break-inside-avoid"
           :class="getModuleColor(resource).border"
         >
           <!-- Resource header -->

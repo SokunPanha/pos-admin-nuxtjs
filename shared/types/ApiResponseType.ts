@@ -1,5 +1,5 @@
 // Auto-generated from OpenAPI spec — do not edit manually
-// Generated at: 2026-02-18T02:06:17.506Z
+// Generated at: 2026-02-18T02:51:51.334Z
 // Source: http://localhost:4000/admin/docs-yaml
 
 export interface LoginDto {
@@ -383,4 +383,90 @@ export interface UpdateProductAttributeRequestType {
 
 export interface DeleteProductAttributeRequestType {
   uuid: string;
+}
+
+export interface DashboardRequestType {
+  trendDays?: number;
+  topProductsLimit?: number;
+  recentOrdersLimit?: number;
+  lowStockThreshold?: number;
+}
+
+export interface DashboardSummaryType {
+  totalOrders: number;
+  totalRevenue: number;
+  totalProducts: number;
+  totalCategories: number;
+  totalUsers: number;
+}
+
+export interface RevenuePeriodDetailType {
+  amount: number;
+  orderCount: number;
+}
+
+export interface DashboardRevenueType {
+  today: RevenuePeriodDetailType;
+  thisWeek: RevenuePeriodDetailType;
+  thisMonth: RevenuePeriodDetailType;
+}
+
+export interface RevenueTrendItemType {
+  date: string;
+  revenue: number;
+  orderCount: number;
+}
+
+export interface DashboardOrderStatusType {
+  pending: number;
+  paid: number;
+  cancelled: number;
+}
+
+export interface CategoryProductCountType {
+  uuid: string;
+  name: Record<string, unknown>;
+  productCount: number;
+}
+
+export interface TopProductItemType {
+  productName: Record<string, unknown>;
+  totalQuantity: number;
+  totalRevenue: number;
+}
+
+export interface RecentOrderItemType {
+  uuid: string;
+  cashierName: string;
+  totalAmount: number;
+  discount: number;
+  status: string;
+  paymentMethod?: Record<string, unknown>;
+  createdAt: string;
+}
+
+export interface PaymentMethodRevenueType {
+  name: Record<string, unknown>;
+  totalRevenue: number;
+  orderCount: number;
+}
+
+export interface LowStockItemType {
+  uuid: string;
+  productName: Record<string, unknown>;
+  variantName: Record<string, unknown>;
+  sku: string;
+  stockQty: number;
+}
+
+export interface DashboardResponseType {
+  summary: DashboardSummaryType;
+  revenue: DashboardRevenueType;
+  revenueTrend: RevenueTrendItemType[];
+  orderStatus: DashboardOrderStatusType;
+  productsByCategory: CategoryProductCountType[];
+  topProducts: TopProductItemType[];
+  recentOrders: RecentOrderItemType[];
+  revenueByPaymentMethod: PaymentMethodRevenueType[];
+  lowStockAlerts: LowStockItemType[];
 }
