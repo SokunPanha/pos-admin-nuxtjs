@@ -1,5 +1,6 @@
 import { computed } from "vue";
 import { defineFilter } from "~/components/ui/table/utils";
+import { ORDER_STATUS_OPTIONS } from "~~/shared/constants";
 
 export function useOrderFilters() {
   const { t } = useI18n();
@@ -9,11 +10,10 @@ export function useOrderFilters() {
       label: t("tableColumn.status"),
       index: "status",
       valueType: "select",
-      options: [
-        { label: "Completed", value: "COMPLETED" },
-        { label: "Pending", value: "PENDING" },
-        { label: "Cancelled", value: "CANCELLED" },
-      ],
+      options: ORDER_STATUS_OPTIONS.map((option) => ({
+        ...option,
+        label: t(`common.${option.label.toLowerCase()}`),
+      })),
     },
     {
       label: t("tableColumn.createdAt"),

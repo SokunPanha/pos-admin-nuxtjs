@@ -19,6 +19,12 @@ export const SYSTEM_ROLE_OPTIONS = [
   { label: "No", value: "N" },
 ];
 
+export const ORDER_STATUS_OPTIONS =  [
+        { label: "Paid", value: "Paid" },
+        { label: "Pending", value: "Pending" },
+        { label: "Cancelled", value: "Cancelled" },
+      ]
+
 export const PERMISSIONS = {
   USER_VIEW: "user:view",
   USER_CREATE: "user:create",

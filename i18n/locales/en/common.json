@@ -1,3 +1,7 @@
 {
-  "common": {}
+  "common": {
+    "paid": "Paid",
+    "pending": "Pending",
+    "cancelled": "Cancelled"
+  }
 }
