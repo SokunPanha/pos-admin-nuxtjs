@@ -64,7 +64,16 @@ const filterField = useProductVariantFilters();
   >
     <template #table-header>
       <div class="flex items-center justify-between">
-        <h1 class="text-xl font-semibold">{{ t("label.productVariants") }}</h1>
+        <div class="flex items-center gap-2">
+          <UButton
+            icon="i-lucide-arrow-left"
+            variant="ghost"
+            color="neutral"
+            size="sm"
+            to="/product-management/products"
+          />
+          <h1 class="text-xl font-semibold">{{ t("label.productVariants") }}</h1>
+        </div>
         <UButton icon="i-lucide-plus" @click="openCreateModal">
           {{ t("label.addProductVariant") }}
         </UButton>
