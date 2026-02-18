@@ -1,9 +1,10 @@
+import { computed } from "vue";
 import { defineFilter } from "~/components/ui/table/utils";
 
 export function usePermissionFilters() {
   const { t } = useI18n();
 
-  return defineFilter([
+  return computed(() => defineFilter([
     {
       label: t("tableColumn.permissionCode"),
       index: "code",
@@ -19,5 +20,5 @@ export function usePermissionFilters() {
       index: "action",
       valueType: "text",
     },
-  ]);
+  ]));
 }

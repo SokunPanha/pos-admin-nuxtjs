@@ -1,16 +1,17 @@
-import { ref, reactive, computed } from "vue";
+import { ref, reactive, computed, toValue, type MaybeRefOrGetter } from "vue";
 import type { FilterFieldType } from "./type";
 
 export function useTableFilter(
-  filterField: FilterFieldType[] | undefined,
+  filterField: MaybeRefOrGetter<FilterFieldType[] | undefined>,
   fetchData: (filter?: any) => Promise<void>,
 ) {
   const isCollapseFilter = ref(true);
   const loading = ref(false);
 
-  const filterItems = computed(() =>
-    isCollapseFilter.value ? filterField : filterField?.slice(0, 3),
-  );
+  const filterItems = computed(() => {
+    const fields = toValue(filterField);
+    return isCollapseFilter.value ? fields : fields?.slice(0, 3);
+  });
 
   type FilterKeys = FilterFieldType["index"];
   const getDefaultValue = (valueType: string) => {
@@ -20,7 +21,7 @@ export function useTableFilter(
   };
 
   const filter = reactive(
-    (filterField ?? []).reduce(
+    (toValue(filterField) ?? []).reduce(
       (acc, item) => {
         acc[item.index] = getDefaultValue(item.valueType);
         return acc;
@@ -34,7 +35,7 @@ export function useTableFilter(
   };
 
   const resetFilter = async () => {
-    filterField?.forEach((item) => {
+    toValue(filterField)?.forEach((item) => {
       filter[item.index] = getDefaultValue(item.valueType);
     });
     await fetchData(filter);

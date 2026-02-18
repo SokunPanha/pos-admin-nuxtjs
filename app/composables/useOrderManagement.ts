@@ -6,18 +6,31 @@ import type {
 } from "~~/shared/types/ApiResponseType";
 
 export function useOrderManagement() {
+  const formatCalendarDate = (d: any) => {
+    // CalendarDate.toString() always returns 'yyyy-mm-dd'
+    const [year, month, day] = String(d).slice(0, 10).split('-')
+    return `${day}-${month}-${year}`
+  }
+
   const fetchOrders = async (params?: {
     page?: number;
     limit?: number;
     filter?: any;
   }) => {
     try {
+      const { dateRange, ...restFilter } = params?.filter ?? {}
+      const rangeValue =
+        dateRange?.start && dateRange?.end
+          ? [formatCalendarDate(dateRange.start), formatCalendarDate(dateRange.end)]
+          : undefined
+
       const res = await $fetch<OrderListResponseType>("/api/admin/order/list", {
         method: "POST",
         body: {
           page: params?.page || 1,
           pageSize: params?.limit || 10,
-          ...params?.filter,
+          ...restFilter,
+          ...(rangeValue ? { dateRange: rangeValue } : {}),
         },
       });
 

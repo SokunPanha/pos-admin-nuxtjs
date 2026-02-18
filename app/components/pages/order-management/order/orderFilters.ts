@@ -1,9 +1,10 @@
+import { computed } from "vue";
 import { defineFilter } from "~/components/ui/table/utils";
 
 export function useOrderFilters() {
   const { t } = useI18n();
 
-  return defineFilter([
+  return computed(() => defineFilter([
     {
       label: t("tableColumn.status"),
       index: "status",
@@ -19,5 +20,5 @@ export function useOrderFilters() {
       index: "range",
       valueType: "dateRange",
     },
-  ]);
+  ]));
 }

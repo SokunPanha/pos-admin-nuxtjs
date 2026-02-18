@@ -1,6 +1,9 @@
 {
   "placeholder": {
     "enterUsername": "Enter your username",
-    "enterPassword": "Enter your password"
+    "enterPassword": "Enter your password",
+    "selectDateRange": "DD-MM-YYYY - DD-MM-YYYY",
+    "select": "Select",
+    "enter": "Enter"
   }
 }

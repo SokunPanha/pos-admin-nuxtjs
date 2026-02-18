@@ -1,6 +1,9 @@
 {
   "placeholder": {
     "enterUsername": "បញ្ចូលឈ្មោះអ្នកប្រើ",
-    "enterPassword": "បញ្ចូលពាក្យសម្ងាត់"
+    "enterPassword": "បញ្ចូលពាក្យសម្ងាត់",
+    "selectDateRange": "ថ្ងៃ-ខែ-ឆ្នាំ - ថ្ងៃ-ខែ-ឆ្នាំ",
+    "select": "ជ្រើសរើស",
+    "enter": "បញ្ចូល"
   }
 }

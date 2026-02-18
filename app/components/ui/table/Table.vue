@@ -20,6 +20,7 @@ import TableToolbar from "./TableToolbar.vue";
 import DatePicker from "./DatePicker.vue";
 import DateRangePicker from "./DateRangePicker.vue";
 
+const {locale} = useI18n();
 const props = defineProps({
   columns: {
     type: Array as () => (ColumnDef<any> | ProTableColumn)[],
@@ -87,7 +88,7 @@ const {
   loading,
   onFilter,
   resetFilter,
-} = useTableFilter(props.filterField, fetchData);
+} = useTableFilter(() => props.filterField, fetchData);
 
 // Column management
 const columnsRef = computed(() => props.columns as ProTableColumn[]);
@@ -263,13 +264,13 @@ const handleExport = () => {
               <UInput
                 v-if="item.valueType === 'text'"
                 v-model="filter[item.index]"
-                :placeholder="`Enter ${item.label}`"
+                :placeholder="$t(`placeholder.enter`) + (locale === 'en' ? ' ' + item.label : item.label)"
               />
               <UInput
                 v-else-if="item.valueType === 'number'"
                 v-model="filter[item.index]"
                 type="number"
-                :placeholder="`Enter ${item.label}`"
+                :placeholder="$t(`placeholder.enter`) + (locale === 'en' ? ' ' + item.label : item.label)"
               />
               <USelect
                 v-else-if="
@@ -277,20 +278,22 @@ const handleExport = () => {
                 "
                 v-model="filter[item.index]"
                 :items="item.options || []"
-                :placeholder="`Select ${item.label}`"
+                :placeholder="$t(`placeholder.select`) + (locale === 'en' ? ' ' + item.label : item.label)"
               />
               <DatePicker
                 v-else-if="item.valueType === 'date'"
                 v-model="filter[item.index]"
+                :placeholder="$t(`placeholder.selectDateRange`)"
               />
               <DateRangePicker
                 v-else-if="item.valueType === 'dateRange'"
                 v-model="filter[item.index]"
+                :placeholder="$t(`placeholder.selectDateRange`)"
               />
               <UTextarea
                 v-else-if="item.valueType === 'textarea'"
                 v-model="filter[item.index]"
-                :placeholder="`Enter ${item.label}`"
+                :placeholder="$t(`placeholder.enter`) + item.label"
               />
               <UCheckbox
                 v-else-if="item.valueType === 'checkbox'"
