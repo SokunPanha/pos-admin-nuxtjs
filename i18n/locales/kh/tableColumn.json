@@ -23,6 +23,11 @@
     "promotePrice": "តម្លៃបញ្ចុះ",
     "stockQty": "ចំនួនស្តុក",
     "attributeName": "ឈ្មោះគុណលក្ខណៈ",
-    "attributeValues": "តម្លៃ"
+    "attributeValues": "តម្លៃ",
+    "orderId": "លេខសម្គាល់ការបញ្ជាទិញ",
+    "cashier": "អ្នកគិតលុយ",
+    "totalAmount": "ចំនួនសរុប",
+    "discount": "បញ្ចុះតម្លៃ",
+    "paymentMethod": "វិធីសាស្ត្រទូទាត់"
   }
 }

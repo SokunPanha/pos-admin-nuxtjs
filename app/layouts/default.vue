@@ -47,6 +47,11 @@ const nav = computed(() => {
     productManagementChildren.push({ label: t("label.productCategories"), to: "/product-management/categories" });
   }
 
+  const ordersManagementChildren: { label: string; to: string }[] = [];
+  if (hasPermission(PERMISSIONS.ORDER_VIEW)) {
+    ordersManagementChildren.push({ label: t("label.orders"), to: "/order-management/orders" });
+  }
+
   return [
     {
       label: t("label.dashboard"),
@@ -59,9 +64,9 @@ const nav = computed(() => {
       children: productManagementChildren,
     },
     {
-      label: t("label.orders"),
+      label: t("label.ordersManagement"),
       icon: "i-lucide-shopping-cart",
-      to: "/orders",
+      children: ordersManagementChildren,
     },
     {
       label: t("label.customers"),

@@ -117,6 +117,23 @@
     "revenue": "Revenue",
     "date": "Date",
     "status": "Status",
-    "totalProducts": "Total Products"
+    "totalProducts": "Total Products",
+    "orderList": "Order List",
+    "orderDetail": "Order Detail",
+    "subtotal": "Subtotal",
+    "quantity": "Quantity",
+    "total": "Total",
+    "discount": "Discount",
+    "ordersManagement": "Order Management",
+    "product": "Product",
+    "customer": "Customer",
+    "orderDate": "Order Date",
+    "viewDetail": "View Detail",
+    "noOrders": "No orders found",
+    "failedToLoadOrders": "Failed to load orders",
+    "orderDetailFor": "Order Detail for Order #",
+    "close": "Close",
+    "failedToLoadOrderDetail": "Failed to load order detail",
+    "orderDetails": "Order Details"
   }
 }

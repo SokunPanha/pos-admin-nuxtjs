@@ -53,4 +53,8 @@ export const PERMISSIONS = {
   PRODUCT_ATTRIBUTE_CREATE: "product-attribute:create",
   PRODUCT_ATTRIBUTE_UPDATE: "product-attribute:update",
   PRODUCT_ATTRIBUTE_DELETE: "product-attribute:delete",
+  ORDER_VIEW: "order:view",
+  ORDER_CREATE: "order:create",
+  ORDER_UPDATE: "order:update",
+  ORDER_DELETE: "order:delete",
 } as const;

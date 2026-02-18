@@ -23,6 +23,11 @@
     "promotePrice": "Promote Price",
     "stockQty": "Stock Qty",
     "attributeName": "Attribute Name",
-    "attributeValues": "Values"
+    "attributeValues": "Values",
+    "orderId": "Order ID",
+    "cashier": "Cashier",
+    "totalAmount": "Total Amount",
+    "discount": "Discount",
+    "paymentMethod": "Payment Method"
   }
 }

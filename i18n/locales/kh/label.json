@@ -117,6 +117,23 @@
     "revenue": "ចំណូល",
     "date": "កាលបរិច្ឆេទ",
     "status": "ស្ថានភាព",
-    "totalProducts": "ផលិតផលសរុប"
+    "totalProducts": "ផលិតផលសរុប",
+    "orderList": "បញ្ជីការបញ្ជាទិញ",
+    "orderDetail": "ព័ត៌មានលម្អិតការបញ្ជាទិញ",
+    "subtotal": "ចំនួនសរុប",
+    "quantity": "ចំនួន",
+    "total": "សរុប",
+    "discount": "បញ្ចុះតម្លៃ",
+    "ordersManagement": "គ្រប់គ្រងការបញ្ជាទិញ",
+    "product": "ផលិតផល",
+    "customer": "អតិថិជន",
+    "orderDate": "កាលបរិច្ឆេទការបញ្ជាទិញ",
+    "viewDetail": "មើលព័ត៌មានលម្អិត",
+    "noOrders": "រកមិនឃើញការបញ្ជាទិញ",
+    "failedToLoadOrders": "មិនអាចទាញយកការបញ្ជាទិញបានទេ",
+    "orderDetailFor": "ព័ត៌មានលម្អិតការបញ្ជាទិញសម្រាប់លេខកំណត់ #",
+    "close": "បិទ",
+    "failedToLoadOrderDetail": "មិនអាចទាញយកព័ត៌មានលម្អិតការបញ្ជាទិញបានទេ",
+    "orderDetails": "ព័ត៌មានលម្អិតការបញ្ជាទិញ"
   }
 }

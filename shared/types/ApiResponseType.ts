@@ -1,5 +1,5 @@
 // Auto-generated from OpenAPI spec — do not edit manually
-// Generated at: 2026-02-18T02:51:51.334Z
+// Generated at: 2026-02-18T05:54:26.309Z
 // Source: http://localhost:4000/admin/docs-yaml
 
 export interface LoginDto {
@@ -469,4 +469,55 @@ export interface DashboardResponseType {
   recentOrders: RecentOrderItemType[];
   revenueByPaymentMethod: PaymentMethodRevenueType[];
   lowStockAlerts: LowStockItemType[];
+}
+
+export interface ListOrderRequestType {
+  page?: number;
+  pageSize?: number;
+  status?: string;
+  fromDate?: string;
+  toDate?: string;
+  cashierId?: number;
+}
+
+export interface OrderItemDetailType {
+  id: number;
+  quantity: number;
+  unitPrice: number;
+  totalPrice: number;
+  productName: Record<string, unknown>;
+  variantName: Record<string, unknown>;
+}
+
+export interface OrderItemType {
+  uuid: string;
+  orderId: number;
+  cashier: Record<string, unknown>;
+  totalAmount: number;
+  discount: number;
+  paymentMethod: Record<string, unknown>;
+  status: string;
+  createdAt: string;
+  items?: OrderItemDetailType[];
+}
+
+export interface OrderListResponseType {
+  total: number;
+  items: OrderItemType[];
+}
+
+export interface OrderDetailRequestType {
+  uuid: string;
+}
+
+export interface OrderDetailResponseType {
+  uuid: string;
+  orderId: number;
+  cashier: Record<string, unknown>;
+  totalAmount: number;
+  discount: number;
+  paymentMethod: Record<string, unknown>;
+  status: string;
+  createdAt: string;
+  items?: OrderItemDetailType[];
 }

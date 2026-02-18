@@ -3,6 +3,7 @@ export default defineNuxtConfig({
   modules: ["@nuxt/eslint", "@nuxt/ui", "@nuxtjs/i18n", "nuxt-auth-utils", "nuxt-charts"],
   components: [
     "~/components/pages/product-management",
+    "~/components/pages/order-management",
     "~/components/pages/systems-setting",
     "~/components/"],
   i18n: {
